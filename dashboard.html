@@ -53,8 +53,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .page-sub{font-size:13px;color:var(--muted);margin-top:2px;}
 .topbar-right{display:flex;align-items:center;gap:10px;}
 .status-pill{display:flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:5px 12px;font-size:12px;color:#10b981;}
-.status-dot{width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#10b981;}
 .date-chip{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;color:var(--soft);font-family:'JetBrains Mono',monospace;}
 
 /* STAT CARDS */
@@ -226,8 +225,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
       <div class="page-sub">Hyderabad · Greater Hyderabad Area</div>
     </div>
     <div class="topbar-right">
-      <div class="status-pill"><div class="status-dot"></div>All Systems Operational</div>
-      <div class="date-chip" id="clock">--</div>
+      <div class="status-pill" style="background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.25); color: #60a5fa;"><div class="status-dot" style="background:#3b82f6;"></div>Handover Process Finalized</div>
+      <div class="date-chip" id="clock">14-Feb-2025</div>
     </div>
   </div>
 
@@ -243,7 +242,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
       <div class="stat-icon green">✅</div>
       <div class="stat-num" id="resolved-count">0</div>
       <div class="stat-label">Resolved Tickets</div>
-      <div class="stat-change up">↑ 94% resolution rate</div>
+      <div class="stat-change up">↑ 100% resolution rate</div>
     </div>
     <div class="stat-card amber">
       <div class="stat-icon amber">💻</div>
@@ -266,7 +265,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title">🎫 ServiceNow — Active Tickets</div>
-        <div class="panel-badge amber">8 Pending</div>
+        <div class="panel-badge green">0 Handed Over</div>
       </div>
       <div class="tab-bar">
         <button class="tab-btn active" onclick="filterTickets('all',this)">All</button>
@@ -295,7 +294,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
       </div>
       <div id="mdm-bars"></div>
       <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
-        <div class="panel-title" style="margin-bottom:12px;">📊 Ticket Trend (This Week)</div>
+        <div class="panel-title" style="margin-bottom:12px;">📊 Closure Velocity (Final Sprint)</div>
         <div class="bar-chart" id="bar-chart"></div>
       </div>
     </div>
@@ -341,8 +340,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
     <!-- ACTIVITY LOG -->
     <div class="panel">
       <div class="panel-header">
-        <div class="panel-title">📋 Activity Log</div>
-        <div class="panel-badge green">Live</div>
+        <div class="panel-title">📋 Exit Day Activity Log</div>
+        <div class="panel-badge blue">Complete</div>
       </div>
       <div id="activity-log"></div>
     </div>
@@ -371,12 +370,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 </main>
 
 <script>
-// CLOCK
-function updateClock(){
-  const now=new Date();
-  document.getElementById('clock').textContent=now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-}
-setInterval(updateClock,1000);updateClock();
+// HARDCODED STEADY CLOCK FOR FINAL DAY
+document.getElementById('clock').textContent = "14-Feb-2025 · 17:30:00";
 
 // ANIMATE COUNTERS
 function animateCount(id,target,duration=1200){
@@ -389,68 +384,28 @@ function animateCount(id,target,duration=1200){
   },duration/60);
 }
 setTimeout(()=>{
-  animateCount('ticket-count',147);
-  animateCount('resolved-count',138);
+  animateCount('ticket-count',14);     // Target changed to match your specific 14 tickets
+  animateCount('resolved-count',14);   // All 14 tickets successfully resolved
   animateCount('device-count',248);
-  animateCount('critical-count',3);
+  animateCount('critical-count',0); 
 },300);
 
-// TICKETS DATA
+// CHANGED: REPLACED WITH YOUR SPECIFIC 14 TICKETS LIST
 const tickets=[
-  {id:'SCTASK0875448',issue:'VPN access issue',priority:'high',status:'open'},
-  {id:'SCTASK0875437',issue:'Outlook sync failure',priority:'medium',status:'progress'},
-  {id:'INC2110979',issue:'Intune enrollment failed',priority:'high',status:'progress'},
-  {id:'INC2110085',issue:'Printer driver missing',priority:'low',status:'resolved'},
-  {id:'INC2155413',issue:'Windows BSOD issue',priority:'high',status:'open'},
-  {id:'INC2156517',issue:'BitLocker recovery support',priority:'medium',status:'resolved'},
-  {id:'SCTASK0874816',issue:'Teams audio issue',priority:'low',status:'open'},
-  {id:'INC2154442',issue:'SCCM deployment failed',priority:'medium',status:'progress'},
-  {id:'INC2168027',issue:'Email delivery delay',priority:'medium',status:'open'},
-  {id:'INC2175843',issue:'Device compliance failure',priority:'high',status:'progress'},
-  {id:'INC2176257',issue:'Citrix login issue',priority:'high',status:'open'},
+  {id:'INC2154442',issue:'SCCM deployment failed',priority:'medium',status:'resolved'},
+  {id:'INC2168027',issue:'Email delivery delay',priority:'medium',status:'resolved'},
+  {id:'INC2175843',issue:'Device compliance failure',priority:'high',status:'resolved'},
+  {id:'INC2176257',issue:'Citrix login issue',priority:'high',status:'resolved'},
   {id:'INC2177841',issue:'Application crash report',priority:'medium',status:'resolved'},
   {id:'INC2175994',issue:'WiFi connectivity issue',priority:'low',status:'resolved'},
-  {id:'INC2230199',issue:'System performance degradation',priority:'high',status:'open'},
-  {id:'INC2266498',issue:'VPN client update required',priority:'medium',status:'progress'},
+  {id:'INC2230199',issue:'System performance degradation',priority:'high',status:'resolved'},
+  {id:'INC2266498',issue:'VPN client update required',priority:'medium',status:'resolved'},
   {id:'INC2266405',issue:'Password reset request',priority:'low',status:'resolved'},
-  {id:'INC2265791',issue:'Exchange mailbox issue',priority:'medium',status:'progress'},
-  {id:'INC2266552',issue:'Patch deployment pending',priority:'medium',status:'open'},
+  {id:'INC2265791',issue:'Exchange mailbox issue',priority:'medium',status:'resolved'},
+  {id:'INC2266552',issue:'Patch deployment pending',priority:'medium',status:'resolved'},
   {id:'INC2266441',issue:'USB device restriction',priority:'low',status:'resolved'},
-  {id:'INC2271600',issue:'Desktop reboot loop',priority:'high',status:'open'},
-  {id:'INC2274029',issue:'Azure AD sync issue',priority:'medium',status:'progress'},
-  {id:'INC2290230',issue:'Windows update failed',priority:'high',status:'open'},
-  {id:'INC2292075',issue:'Shared drive inaccessible',priority:'medium',status:'resolved'},
-  {id:'INC2293235',issue:'Outlook profile corruption',priority:'medium',status:'progress'},
-  {id:'INC2307148',issue:'MDM policy conflict',priority:'high',status:'open'},
-  {id:'INC2306837',issue:'Printer spooler stopped',priority:'low',status:'resolved'},
-  {id:'INC2307432',issue:'Microsoft Teams crash',priority:'medium',status:'progress'},
-  {id:'INC2302566',issue:'Account lockout issue',priority:'medium',status:'resolved'},
-  {id:'INC2307711',issue:'Laptop overheating',priority:'high',status:'open'},
-  {id:'INC2316509',issue:'VDI latency issue',priority:'medium',status:'progress'},
-  {id:'SCTASK0910802',issue:'Software installation request',priority:'low',status:'resolved'},
-  {id:'INC2359763',issue:'VPN MFA issue',priority:'high',status:'open'},
-  {id:'INC2359633',issue:'Exchange autodiscover issue',priority:'medium',status:'progress'},
-  {id:'INC2359456',issue:'Slow boot performance',priority:'medium',status:'resolved'},
-  {id:'INC2359392',issue:'Intune sync pending',priority:'high',status:'open'},
-  {id:'INC2359302',issue:'Printer mapping issue',priority:'low',status:'resolved'},
-  {id:'INC2359181',issue:'Software deployment retry',priority:'medium',status:'progress'},
-  {id:'INC2356204',issue:'Windows activation issue',priority:'high',status:'open'},
-  {id:'INC2359376',issue:'JAMF policy failure',priority:'medium',status:'progress'},
-  {id:'INC2359168',issue:'Password expiry alert',priority:'low',status:'resolved'},
-  {id:'INC2354563',issue:'Outlook OST corruption',priority:'high',status:'open'},
-  {id:'INC2360354',issue:'Device compliance mismatch',priority:'medium',status:'progress'},
-  {id:'INC2366278',issue:'Application install pending',priority:'medium',status:'resolved'},
-  {id:'INC2365680',issue:'Remote desktop issue',priority:'high',status:'open'},
-  {id:'SCTASK0961842',issue:'Access provisioning request',priority:'low',status:'resolved'},
-  {id:'INC2370447',issue:'WiFi authentication issue',priority:'medium',status:'progress'},
-  {id:'INC2371980',issue:'Citrix workspace crash',priority:'high',status:'open'},
-  {id:'INC2381291',issue:'Windows patch rollback',priority:'medium',status:'resolved'},
-  {id:'INC2381196',issue:'VPN reconnect issue',priority:'high',status:'progress'},
-  {id:'INC2383270',issue:'Outlook add-in disabled',priority:'medium',status:'open'},
-  {id:'INC2382806',issue:'Device encryption pending',priority:'medium',status:'resolved'},
-  {id:'INC2384613',issue:'SCCM client reinstall',priority:'high',status:'progress'},
-  {id:'INC2384601',issue:'Microsoft Store blocked',priority:'low',status:'resolved'},
-  {id:'INC2385109',issue:'Endpoint security alert',priority:'high',status:'open'}
+  {id:'INC2271600',issue:'Desktop reboot loop',priority:'high',status:'resolved'},
+  {id:'INC2274029',issue:'Azure AD sync issue',priority:'medium',status:'resolved'}
 ];
 
 function renderTickets(filter){
@@ -490,13 +445,13 @@ setTimeout(()=>{
   });
 },400);
 
-// BAR CHART
-const days=['M','T','W','T','F','S','S'];
-const vals=[18,24,15,28,22,10,8];
+// TICKET TREND / SPRINT CHART FOR FINAL WEEK (Feb 10 - Feb 14)
+const days=['10th','11th','12th','13th','14th','Exit','Done'];
+const vals=[5,4,3,2,0,0,0]; // Visual trace showing countdown clearance of your active logs
 const maxV=Math.max(...vals);
 document.getElementById('bar-chart').innerHTML=days.map((d,i)=>`
   <div class="bar-wrap">
-    <div class="bar" style="height:0;background:linear-gradient(180deg,#3b82f6,#06b6d4);margin-top:auto;" data-h="${Math.round((vals[i]/maxV)*70)}px"></div>
+    <div class="bar" style="height:0;background:linear-gradient(180deg,#10b981,#3b82f6);margin-top:auto;" data-h="${Math.round((vals[i]/maxV)*70)}px"></div>
     <span class="bar-label">${d}</span>
   </div>`).join('');
 setTimeout(()=>{
@@ -509,8 +464,8 @@ setTimeout(()=>{
 const devices=[
   {icon:'win',emoji:'💻',name:'DESK-WIN-0142','sub':'Windows 11 Pro · Intune Managed','status':'online','statusText':'Online'},
   {icon:'mac',emoji:'🍎',name:'MAC-BOOK-0087','sub':'macOS Ventura · JAMF Enrolled','status':'online','statusText':'Online'},
-  {icon:'mob',emoji:'📱',name:'AND-MOB-0234','sub':'Android 13 · Hexnode MDM','status':'pending','statusText':'Pending'},
-  {icon:'win',emoji:'💻',name:'DESK-WIN-0098','sub':'Windows 10 · Patch Pending','status':'offline','statusText':'Offline'},
+  {icon:'mob',emoji:'📱',name:'AND-MOB-0234','sub':'Android 13 · Hexnode MDM','status':'online','statusText':'Online'},
+  {icon:'win',emoji:'💻',name:'DESK-WIN-0098','sub':'Windows 10 · Patch Compliant','status':'online','statusText':'Online'},
   {icon:'win',emoji:'💻',name:'DESK-WIN-0201','sub':'Windows 11 · VDI Citrix','status':'online','statusText':'Online'},
 ];
 document.getElementById('device-list').innerHTML=devices.map(d=>`
@@ -523,25 +478,23 @@ document.getElementById('device-list').innerHTML=devices.map(d=>`
     <div class="device-status ${d.status}">${d.statusText}</div>
   </div>`).join('');
 
-// ACTIVITY LOG
+// HISTORICAL ACTIVITY LOG FOR FEB 14, 2025 (LAST WORKING DAY TIMELINE)
 const logs=[
-  {dot:'green',text:'INC2385109 endpoint security alert investigated and contained','time':'5 min ago'},
-  {dot:'blue',text:'INC2384613 SCCM client reinstall completed successfully','time':'12 min ago'},
-  {dot:'amber',text:'INC2383270 Outlook add-in issue escalated to L2 support','time':'20 min ago'},
-  {dot:'red',text:'INC2371980 Citrix workspace crash affecting finance users','time':'35 min ago'},
-  {dot:'purple',text:'INC2365680 remote desktop issue resolved for branch operations','time':'48 min ago'},
-  {dot:'green',text:'INC2359763 VPN MFA authentication restored','time':'1 hr ago'},
-  {dot:'blue',text:'INC2307148 MDM policy conflict synchronized with Intune','time':'1 hr ago'},
-  {dot:'amber',text:'INC2290230 Windows update rollback initiated','time':'2 hrs ago'},
-  {dot:'red',text:'INC2271600 desktop reboot loop reported from Hyderabad branch','time':'3 hrs ago'},
-  {dot:'purple',text:'SCTASK0910802 software installation request completed','time':'4 hrs ago'}
+  {dot:'green',text:'Final handover documentation signed off and submitted to IT Operations lead','time':'17:15'},
+  {dot:'blue',text:'All pending ServiceNow ticket queues verified cleanly closed (0 pending backlog)','time':'16:30'},
+  {dot:'purple',text:'Admin privileges and access rights successfully unassigned from local domain profile','time':'15:00'},
+  {dot:'amber',text:'Physical asset verification completed: Master inventory tracker updated for Hyderabad hub','time':'14:15'},
+  {dot:'green',text:'Knowledge Transfer (KT) sessions completed for incoming engineers on Intune/JAMF profiles','time':'12:00'},
+  {dot:'blue',text:'Final verification checks on Azure AD/Intune custom deployment scripts completed','time':'11:15'},
+  {dot:'purple',text:'Verification loop complete on branch VDI & Citrix configuration handovers','time':'10:30'},
+  {dot:'green',text:'Final morning shift stand-up at Kotak Mahindra Bank: Sync completed successfully','time':'09:30'}
 ];
 document.getElementById('activity-log').innerHTML=logs.map(l=>`
   <div class="log-item">
     <div class="log-dot ${l.dot}"></div>
     <div>
       <div class="log-text">${l.text}</div>
-      <div class="log-time">${l.time}</div>
+      <div class="log-time" style="color:var(--soft); font-weight:600;">${l.time} Hrs</div>
     </div>
   </div>`).join('');
 </script>
