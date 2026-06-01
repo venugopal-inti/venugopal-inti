@@ -3,500 +3,630 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IT Infrastructure Dashboard — Venugopal Inti</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Venugopal Inti — IT Infrastructure Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0b0f19;
-  --surface: #111827;
-  --card: #161d2e;
-  --border: rgba(99,179,255,0.12);
-  --blue: #3b82f6;
-  --cyan: #06b6d4;
-  --green: #10b981;
-  --amber: #f59e0b;
+  --bg: #05080f;
+  --s1: #080d1a;
+  --s2: #0c1220;
+  --card: #0f1628;
+  --border: rgba(180,150,80,0.15);
+  --border2: rgba(255,255,255,0.06);
+  --gold: #c9a84c;
+  --gold2: #e8c97a;
+  --gold3: rgba(201,168,76,0.12);
+  --blue: #4a90d9;
+  --cyan: #38bdf8;
+  --green: #22c55e;
   --red: #ef4444;
-  --purple: #8b5cf6;
-  --text: #e2e8f0;
-  --muted: #64748b;
+  --amber: #f59e0b;
+  --purple: #a78bfa;
+  --text: #eef0f6;
   --soft: #94a3b8;
+  --muted: #4a5568;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);font-family:'Outfit',sans-serif;color:var(--text);min-height:100vh;overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);font-family:'Manrope',sans-serif;color:var(--text);overflow-x:hidden;}
 
-/* grid bg */
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0;}
-
-/* SIDEBAR */
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;background:var(--surface);border-right:1px solid var(--border);padding:24px 16px;z-index:10;display:flex;flex-direction:column;gap:6px;}
-.logo{display:flex;align-items:center;gap:10px;padding:0 8px;margin-bottom:20px;}
-.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.logo-text{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;}
-.logo-sub{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
-
-.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;transition:all 0.2s;font-size:13px;color:var(--soft);}
-.nav-item:hover,.nav-item.active{background:rgba(59,130,246,0.12);color:var(--blue);}
-.nav-item .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex-shrink:0;}
-.nav-item.active .dot{background:var(--blue);box-shadow:0 0 8px var(--blue);}
-
-.nav-section{font-size:10px;letter-spacing:1.5px;color:var(--muted);padding:12px 12px 4px;text-transform:uppercase;}
-.sidebar-bottom{margin-top:auto;padding-top:16px;border-top:1px solid var(--border);}
-.admin-badge{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(99,179,255,0.06);border-radius:8px;border:1px solid var(--border);}
-.admin-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
-.admin-name{font-size:12px;font-weight:500;}
-.admin-role{font-size:10px;color:var(--muted);}
-
-/* MAIN */
-.main{margin-left:220px;padding:28px 28px;position:relative;z-index:1;}
-.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
-.page-title{font-size:22px;font-weight:700;letter-spacing:-0.5px;}
-.page-sub{font-size:13px;color:var(--muted);margin-top:2px;}
-.topbar-right{display:flex;align-items:center;gap:10px;}
-.status-pill{display:flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:5px 12px;font-size:12px;color:#10b981;}
-.status-dot{width:6px;height:6px;border-radius:50%;background:#10b981;}
-.date-chip{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;color:var(--soft);font-family:'JetBrains Mono',monospace;}
-
-/* STAT CARDS */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s;animation:fadeUp 0.5s ease both;}
-.stat-card:hover{border-color:rgba(59,130,246,0.3);transform:translateY(-2px);}
-.stat-card::after{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;opacity:0.06;}
-.stat-card.blue::after{background:var(--blue);}
-.stat-card.green::after{background:var(--green);}
-.stat-card.amber::after{background:var(--amber);}
-.stat-card.red::after{background:var(--red);}
-.stat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:14px;}
-.stat-icon.blue{background:rgba(59,130,246,0.15);color:var(--blue);}
-.stat-icon.green{background:rgba(16,185,129,0.15);color:var(--green);}
-.stat-icon.amber{background:rgba(245,158,11,0.15);color:var(--amber);}
-.stat-icon.red{background:rgba(239,68,68,0.15);color:var(--red);}
-.stat-num{font-size:32px;font-weight:700;line-height:1;font-family:'JetBrains Mono',monospace;}
-.stat-label{font-size:12px;color:var(--muted);margin-top:4px;}
-.stat-change{font-size:11px;margin-top:8px;display:flex;align-items:center;gap:4px;}
-.stat-change.up{color:var(--green);}
-.stat-change.dn{color:var(--red);}
-
-/* SECTION GRID */
-.section-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;margin-bottom:20px;}
-.section-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px;}
-
-/* PANEL */
-.panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;animation:fadeUp 0.5s 0.15s ease both;}
-.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
-.panel-title{font-size:14px;font-weight:600;}
-.panel-badge{font-size:11px;background:rgba(59,130,246,0.12);color:var(--blue);border:1px solid rgba(59,130,246,0.2);border-radius:20px;padding:3px 10px;}
-.panel-badge.green{background:rgba(16,185,129,0.1);color:var(--green);border-color:rgba(16,185,129,0.2);}
-.panel-badge.amber{background:rgba(245,158,11,0.1);color:var(--amber);border-color:rgba(245,158,11,0.2);}
-
-/* TICKETS TABLE */
-.ticket-table{width:100%;border-collapse:collapse;}
-.ticket-table th{text-align:left;font-size:11px;color:var(--muted);font-weight:500;padding:0 10px 10px;text-transform:uppercase;letter-spacing:0.8px;border-bottom:1px solid var(--border);}
-.ticket-table td{padding:11px 10px;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.03);}
-.ticket-table tr:last-child td{border-bottom:none;}
-.ticket-table tr:hover td{background:rgba(255,255,255,0.02);}
-.priority-pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 8px;border-radius:6px;font-weight:500;}
-.priority-pill.high{background:rgba(239,68,68,0.12);color:#f87171;}
-.priority-pill.medium{background:rgba(245,158,11,0.12);color:#fbbf24;}
-.priority-pill.low{background:rgba(16,185,129,0.12);color:#34d399;}
-.status-tag{display:inline-block;font-size:11px;padding:3px 8px;border-radius:6px;font-weight:500;}
-.status-tag.open{background:rgba(59,130,246,0.12);color:#60a5fa;}
-.status-tag.progress{background:rgba(245,158,11,0.12);color:#fbbf24;}
-.status-tag.resolved{background:rgba(16,185,129,0.12);color:#34d399;}
-.ticket-id{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
-
-/* DEVICE LIST */
-.device-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-.device-item:last-child{border-bottom:none;}
-.device-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
-.device-icon.win{background:rgba(59,130,246,0.12);}
-.device-icon.mac{background:rgba(139,92,246,0.12);}
-.device-icon.mob{background:rgba(6,182,212,0.12);}
-.device-name{font-size:13px;font-weight:500;}
-.device-sub{font-size:11px;color:var(--muted);}
-.device-status{margin-left:auto;font-size:11px;font-weight:500;}
-.device-status.online{color:var(--green);}
-.device-status.offline{color:var(--red);}
-.device-status.pending{color:var(--amber);}
-
-/* MDM PROGRESS */
-.mdm-item{margin-bottom:14px;}
-.mdm-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;}
-.mdm-label span:first-child{color:var(--soft);}
-.mdm-label span:last-child{color:var(--text);font-family:'JetBrains Mono',monospace;font-weight:600;}
-.progress-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;}
-.progress-fill{height:100%;border-radius:3px;transition:width 1s ease;}
-.fill-blue{background:linear-gradient(90deg,var(--blue),var(--cyan));}
-.fill-green{background:linear-gradient(90deg,var(--green),#34d399);}
-.fill-purple{background:linear-gradient(90deg,var(--purple),#a78bfa);}
-.fill-amber{background:linear-gradient(90deg,var(--amber),#fbbf24);}
-
-/* ACTIVITY LOG */
-.log-item{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.03);}
-.log-item:last-child{border-bottom:none;}
-.log-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
-.log-dot.blue{background:var(--blue);}
-.log-dot.green{background:var(--green);}
-.log-dot.amber{background:var(--amber);}
-.log-dot.red{background:var(--red);}
-.log-dot.purple{background:var(--purple);}
-.log-text{font-size:12.5px;color:var(--soft);line-height:1.5;}
-.log-time{font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
-
-/* DONUT CHART */
-.donut-wrap{display:flex;align-items:center;gap:20px;}
-.donut-legend{display:flex;flex-direction:column;gap:8px;}
-.legend-item{display:flex;align-items:center;gap:8px;font-size:12px;}
-.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
-
-/* CHART BARS */
-.bar-chart{display:flex;align-items:flex-end;gap:8px;height:80px;margin-top:8px;}
-.bar-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
-.bar{width:100%;border-radius:4px 4px 0 0;transition:height 0.8s ease;min-width:18px;}
-.bar-label{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-
-/* TABS */
-.tab-bar{display:flex;gap:4px;margin-bottom:16px;}
-.tab-btn{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;border:none;background:transparent;color:var(--muted);}
-.tab-btn.active{background:rgba(59,130,246,0.15);color:var(--blue);}
-.tab-btn:hover:not(.active){background:rgba(255,255,255,0.04);color:var(--soft);}
-
-/* RESPONSIVE */
-@media(max-width:1100px){
-  .sidebar{width:60px;padding:16px 8px;}
-  .logo-text,.logo-sub,.nav-item span,.nav-section,.admin-name,.admin-role{display:none;}
-  .main{margin-left:60px;}
-  .stats-grid{grid-template-columns:repeat(2,1fr);}
-  .section-grid{grid-template-columns:1fr;}
-  .section-grid-3{grid-template-columns:1fr 1fr;}
+/* ── BG TEXTURE ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(74,144,217,0.05) 0%, transparent 50%),
+    linear-gradient(rgba(201,168,76,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,0.02) 1px,transparent 1px);
+  background-size:auto,auto,48px 48px,48px 48px;
 }
-@media(max-width:700px){
-  .stats-grid{grid-template-columns:1fr 1fr;}
-  .section-grid-3{grid-template-columns:1fr;}
-  .main{padding:16px;}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 24px 80px;position:relative;z-index:1;}
+
+/* ── TOPBAR ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0 40px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:60px;
+}
+.topbar-logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),#8b6914);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;color:#fff;
+  font-family:'Playfair Display',serif;
+}
+.logo-label{font-size:13px;color:var(--soft);letter-spacing:0.5px;}
+.open-badge{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);
+  border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#4ade80;
+}
+.pulse{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.4);}50%{opacity:.7;box-shadow:0 0 0 5px rgba(34,197,94,0);}}
+
+/* ── HERO ── */
+.hero{
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;
+  margin-bottom:64px;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:10px;margin-bottom:18px;
+}
+.eyebrow-line{width:32px;height:1px;background:var(--gold);}
+.eyebrow-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;}
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(40px,6vw,64px);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-1px;
+  background:linear-gradient(135deg,#fff 0%,var(--gold2) 50%,#fff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:12px;
+}
+.hero-role{
+  font-size:15px;color:var(--soft);line-height:1.8;max-width:520px;margin-bottom:24px;
+}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.tag{
+  font-size:11px;padding:5px 13px;border-radius:6px;font-weight:600;letter-spacing:0.3px;
+  background:var(--gold3);border:1px solid rgba(201,168,76,0.25);color:var(--gold2);
+}
+.tag.alt{background:rgba(74,144,217,0.1);border-color:rgba(74,144,217,0.25);color:#93c5fd;}
+
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold),#8b6914);
+  color:#fff;font-weight:700;font-size:14px;
+  padding:13px 28px;border-radius:10px;text-decoration:none;
+  box-shadow:0 4px 24px rgba(201,168,76,0.3);
+  transition:transform .2s,box-shadow .2s;letter-spacing:0.3px;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,0.45);}
+
+.hero-avatar{
+  width:160px;height:160px;border-radius:20px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--s2),var(--card));
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:52px;font-weight:800;
+  color:var(--gold);position:relative;overflow:hidden;
+}
+.hero-avatar::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,168,76,0.08),transparent);
+}
+
+/* ── SECTION HEADING ── */
+.sec-head{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+.sec-title{
+  font-family:'Playfair Display',serif;font-size:22px;font-weight:700;
+  color:var(--text);white-space:nowrap;
+}
+.sec-sub{font-size:12px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:24px;}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:60px;}
+.stat{
+  background:var(--card);border:1px solid var(--border2);border-radius:14px;
+  padding:20px 16px;text-align:center;position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s;
+}
+.stat:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);}
+.stat::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;
+  transition:opacity .2s;
+}
+.stat:hover::before{opacity:1;}
+.stat-n{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:var(--gold2);line-height:1;}
+.stat-l{font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:0.3px;}
+.stat-c{font-size:11px;margin-top:8px;color:var(--green);}
+
+/* ── APPRECIATION CARDS ── */
+.appr-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:60px;}
+.appr-card{
+  background:var(--card);border:1px solid var(--border2);border-radius:16px;
+  padding:26px;position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s;
+}
+.appr-card:hover{border-color:rgba(201,168,76,0.25);transform:translateY(-3px);}
+.appr-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.quote-mark{
+  font-family:'Playfair Display',serif;font-size:56px;color:var(--gold);
+  opacity:0.2;line-height:.8;margin-bottom:10px;
+}
+.appr-text{font-size:13px;line-height:1.8;color:#b0bdc9;margin-bottom:20px;}
+.appr-text strong{color:var(--gold2);}
+.appr-meta{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--border2);}
+.appr-icon{
+  width:36px;height:36px;border-radius:9px;
+  background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.05));
+  border:1px solid rgba(201,168,76,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+}
+.appr-name{font-size:13px;font-weight:600;color:var(--text);}
+.appr-role{font-size:11px;color:var(--muted);margin-top:1px;}
+.appr-badge{
+  margin-left:auto;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;
+  background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);color:var(--gold);
+}
+
+/* ── CERTIFICATE ── */
+.cert-card{
+  background:linear-gradient(135deg,#0f1a10,#0c1a28);
+  border:1px solid rgba(201,168,76,0.3);border-radius:18px;
+  padding:32px 36px;margin-bottom:60px;
+  display:flex;align-items:center;gap:32px;
+  position:relative;overflow:hidden;
+}
+.cert-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(201,168,76,0.06),transparent);
+  pointer-events:none;
+}
+.cert-seal{
+  width:80px;height:80px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold),#7a5a10);
+  display:flex;align-items:center;justify-content:center;font-size:30px;
+  box-shadow:0 0 0 4px rgba(201,168,76,0.2),0 0 0 8px rgba(201,168,76,0.08);
+}
+.cert-content{flex:1;}
+.cert-issued{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
+.cert-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;}
+.cert-detail{font-size:13px;color:var(--soft);}
+.cert-detail strong{color:var(--gold2);}
+.cert-tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.cert-tag{font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#4ade80;font-weight:600;}
+
+/* ── SKILLS ── */
+.skills-block{
+  background:var(--card);border:1px solid var(--border2);border-radius:16px;
+  padding:28px;margin-bottom:20px;
+}
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.skill-row{display:flex;flex-direction:column;gap:6px;}
+.skill-top{display:flex;justify-content:space-between;font-size:12px;}
+.skill-name-l{color:var(--soft);}
+.skill-pct{color:var(--gold2);font-family:'JetBrains Mono',monospace;font-weight:600;}
+.skill-bar{height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;}
+.skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 1.2s ease;}
+
+/* ── TOOLS ── */
+.tools-block{
+  background:var(--card);border:1px solid var(--border2);border-radius:16px;
+  padding:28px;margin-bottom:60px;
+}
+.tools-wrap{display:flex;flex-wrap:wrap;gap:10px;}
+.tool{
+  font-size:12px;padding:7px 16px;border-radius:8px;font-weight:600;
+  transition:all .2s;cursor:default;
+}
+.tool.t1{background:rgba(74,144,217,0.1);border:1px solid rgba(74,144,217,0.2);color:#93c5fd;}
+.tool.t2{background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);color:#c4b5fd;}
+.tool.t3{background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.2);color:#7dd3fc;}
+.tool.t4{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:#fcd34d;}
+.tool.t5{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#86efac;}
+.tool:hover{transform:translateY(-2px);filter:brightness(1.2);}
+
+/* ── DASHBOARD STRIP ── */
+.dash-panel{
+  background:var(--s2);border:1px solid var(--border2);border-radius:18px;
+  overflow:hidden;margin-bottom:60px;
+}
+.dash-header{
+  background:linear-gradient(90deg,#0c1428,#0a1020);
+  padding:18px 24px;border-bottom:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.dash-htitle{font-size:13px;font-weight:600;color:var(--text);}
+.dash-hbadge{font-size:11px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#4ade80;border-radius:20px;padding:3px 12px;}
+.ticket-table{width:100%;border-collapse:collapse;}
+.ticket-table th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:12px 16px;text-align:left;border-bottom:1px solid var(--border2);}
+.ticket-table td{padding:11px 16px;font-size:12.5px;border-bottom:1px solid rgba(255,255,255,0.02);}
+.ticket-table tr:hover td{background:rgba(201,168,76,0.02);}
+.ticket-table tr:last-child td{border-bottom:none;}
+.tid{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+.ppill{font-size:10px;padding:2px 8px;border-radius:5px;font-weight:600;}
+.ppill.high{background:rgba(239,68,68,0.12);color:#f87171;}
+.ppill.medium{background:rgba(245,158,11,0.12);color:#fcd34d;}
+.ppill.low{background:rgba(34,197,94,0.12);color:#86efac;}
+.stag{font-size:10px;padding:2px 8px;border-radius:5px;font-weight:600;}
+.stag.resolved{background:rgba(34,197,94,0.12);color:#86efac;}
+
+.tab-bar{display:flex;gap:4px;padding:12px 16px 0;}
+.tbtn{padding:6px 14px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s;}
+.tbtn.active{background:var(--gold3);color:var(--gold);}
+
+/* ── EXPERIENCE ── */
+.exp-list{display:flex;flex-direction:column;gap:14px;margin-bottom:60px;}
+.exp-item{
+  background:var(--card);border:1px solid var(--border2);border-radius:14px;
+  padding:20px 22px;display:flex;gap:18px;align-items:flex-start;
+  transition:border-color .2s;
+}
+.exp-item:hover{border-color:rgba(201,168,76,0.2);}
+.exp-ico{
+  width:42px;height:42px;border-radius:11px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  background:var(--gold3);border:1px solid rgba(201,168,76,0.2);
+}
+.exp-role{font-size:14px;font-weight:600;color:var(--text);}
+.exp-co{font-size:12px;color:var(--gold);margin-top:2px;}
+.exp-loc{font-size:11px;color:var(--muted);margin-top:3px;}
+
+/* ── FOOTER ── */
+.footer{
+  text-align:center;padding-top:40px;border-top:1px solid var(--border);
+  font-size:12px;color:var(--muted);letter-spacing:0.5px;
+}
+.footer a{color:var(--gold);text-decoration:none;}
+.footer a:hover{color:var(--gold2);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.hero,.stats-row,.appr-grid,.cert-card,.skills-block,.tools-block,.dash-panel,.exp-list{animation:fadeUp .6s ease both;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;}
+  .hero-avatar{display:none;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .appr-grid{grid-template-columns:1fr;}
+  .skill-grid{grid-template-columns:1fr;}
+  .cert-card{flex-direction:column;gap:16px;}
+  .topbar{flex-direction:column;gap:12px;align-items:flex-start;}
 }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<!-- SIDEBAR -->
-<nav class="sidebar">
-  <div class="logo">
-    <div class="logo-icon">🖥️</div>
-    <div>
-      <div class="logo-text">IT Dashboard</div>
-      <div class="logo-sub">v2.4.1</div>
-    </div>
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-logo">
+    <div class="logo-mark">VI</div>
+    <div class="logo-label">IT Infrastructure Portfolio · Hyderabad, Telangana</div>
   </div>
+  <div class="open-badge"><div class="pulse"></div> Open to Work</div>
+</div>
 
-  <div class="nav-section">Main</div>
-  <div class="nav-item active"><div class="dot"></div><span>Overview</span></div>
-  <div class="nav-item"><div class="dot"></div><span>Tickets</span></div>
-  <div class="nav-item"><div class="dot"></div><span>Assets</span></div>
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">Desktop Support Engineer</div>
+    </div>
+    <div class="hero-name">Venugopal<br>Inti</div>
+    <div class="hero-role">
+      IT Infrastructure & End-User Solutions Specialist with <strong style="color:var(--gold2)">6+ years</strong> of hands-on experience in MDM, SCCM, ServiceNow, Citrix VDI, and enterprise endpoint management across large-scale banking environments.
+    </div>
+    <div class="hero-tags">
+      <span class="tag">MDM Expert</span>
+      <span class="tag">Microsoft Intune</span>
+      <span class="tag">JAMF Pro</span>
+      <span class="tag alt">Kotak Mahindra Bank</span>
+      <span class="tag alt">ServiceNow</span>
+      <span class="tag alt">Hyderabad · Remote · Hybrid</span>
+    </div>
+    <a class="hero-cta" href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank">
+      View LinkedIn Profile →
+    </a>
+  </div>
+  <div class="hero-avatar">VI</div>
+</div>
 
-  <div class="nav-section">Management</div>
-  <div class="nav-item"><div class="dot"></div><span>MDM Devices</span></div>
-  <div class="nav-item"><div class="dot"></div><span>Intune</span></div>
-  <div class="nav-item"><div class="dot"></div><span>SCCM</span></div>
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat">
+    <div class="stat-n" id="c1">0</div>
+    <div class="stat-l">Years Experience</div>
+    <div class="stat-c">IT Infrastructure</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" id="c2">0</div>
+    <div class="stat-l">Devices Managed</div>
+    <div class="stat-c">Intune + JAMF + Hexnode</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" id="c3">0</div>
+    <div class="stat-l">Tickets Resolved</div>
+    <div class="stat-c">100% Resolution Rate</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n" id="c4">0</div>
+    <div class="stat-l">Appreciation Mails</div>
+    <div class="stat-c">From Senior Management</div>
+  </div>
+</div>
 
-  <div class="nav-section">Reports</div>
-  <div class="nav-item"><div class="dot"></div><span>Analytics</span></div>
-  <div class="nav-item"><div class="dot"></div><span>Compliance</span></div>
+<!-- APPRECIATION SECTION -->
+<div class="sec-head">
+  <div class="sec-title">Appreciation & Recognition</div>
+  <div class="sec-line"></div>
+</div>
+<div class="sec-sub">Testimonials from Kotak Mahindra Bank Leadership</div>
 
-  <div class="sidebar-bottom">
-    <div class="admin-badge">
-      <div class="admin-avatar">VI</div>
+<div class="appr-grid">
+
+  <div class="appr-card">
+    <div class="quote-mark">"</div>
+    <div class="appr-text">
+      Mr. I Venugopala is <strong>always available for resolving the issues in the branch</strong> whenever we call post raising the remedy. Generally calling IT is a herculean task, but we are lucky to have Venu, in same city whenever issue arises to resolve. Since <strong>CISCO NAC Network</strong> introduced often we face login issues multiple times where he resolves immediately.
+    </div>
+    <div class="appr-meta">
+      <div class="appr-icon">🏦</div>
       <div>
-        <div class="admin-name">Venugopal Inti</div>
-        <div class="admin-role">Desktop Engineer</div>
+        <div class="appr-name">Mamatha Nizamkar</div>
+        <div class="appr-role">Consumer Bank, Kotak Mahindra Bank Ltd.</div>
+      </div>
+      <div class="appr-badge">Appraisal Mail</div>
+    </div>
+  </div>
+
+  <div class="appr-card">
+    <div class="quote-mark">"</div>
+    <div class="appr-text">
+      Your <strong>expertise and quick response</strong> to any sort of Cisco Network related issues and Applications like <strong>Finacle, Kraman, 2FA</strong> etc were invaluable and helped prevent what could have been a significant disruption to our operations. Your professional demeanor and patience in handling the situation did not go unnoticed. Your <strong>dedication to ensuring the smooth functioning of our IT infrastructure is a critical component of our team's success.</strong>
+    </div>
+    <div class="appr-meta">
+      <div class="appr-icon">⭐</div>
+      <div>
+        <div class="appr-name">Sharat Chandra Gajula</div>
+        <div class="appr-role">Branch Operations Manager, Punjagutta · KMBL</div>
+      </div>
+      <div class="appr-badge">Appreciation Mail</div>
+    </div>
+  </div>
+
+  <div class="appr-card" style="grid-column:1/-1;background:linear-gradient(135deg,#0c1a14,#0a1020);">
+    <div style="display:flex;gap:16px;align-items:flex-start;">
+      <div style="font-size:36px;opacity:0.5;font-family:'Playfair Display',serif;line-height:.8;color:var(--gold);">"</div>
+      <div style="flex:1;">
+        <div class="appr-text" style="font-size:14px;color:#c8d4e0;">
+          <strong style="color:var(--gold2);">@Venu appreciated, keep doing well.</strong>
+        </div>
+        <div class="appr-meta" style="border-top:1px solid var(--border2);padding-top:12px;">
+          <div class="appr-icon">👤</div>
+          <div>
+            <div class="appr-name">Madhankumar Rajendran</div>
+            <div class="appr-role">Information Technology · Kotak Mahindra Bank Ltd. · Somajiguda, Hyderabad</div>
+          </div>
+          <div class="appr-badge" style="background:rgba(74,144,217,0.1);border-color:rgba(74,144,217,0.2);color:#93c5fd;">IT Manager</div>
+        </div>
       </div>
     </div>
   </div>
-</nav>
 
-<!-- MAIN CONTENT -->
-<main class="main">
+</div>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
+<!-- CERTIFICATE SECTION -->
+<div class="sec-head">
+  <div class="sec-title">Certifications</div>
+  <div class="sec-line"></div>
+</div>
+<div class="sec-sub">Completed Courses & Training</div>
+
+<div class="cert-card">
+  <div class="cert-seal">🎓</div>
+  <div class="cert-content">
+    <div class="cert-issued">Kotak myLearn · Certificate of Completion</div>
+    <div class="cert-title">Awareness Course on Phishing</div>
+    <div class="cert-detail">
+      Issued by <strong>Kotak Mahindra Bank Ltd.</strong> — Kotak myLearn Platform &nbsp;·&nbsp; Completed on <strong>18 Jan, 2024</strong>
+    </div>
+    <div class="cert-tags">
+      <span class="cert-tag">✓ Cybersecurity</span>
+      <span class="cert-tag">✓ Phishing Awareness</span>
+      <span class="cert-tag">✓ Security Best Practices</span>
+      <span class="cert-tag">✓ Enterprise Training</span>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="sec-head">
+  <div class="sec-title">Core Technical Skills</div>
+  <div class="sec-line"></div>
+</div>
+<div class="sec-sub" style="margin-bottom:16px;">Proficiency Levels</div>
+<div class="skills-block">
+  <div class="skill-grid" id="skill-grid"></div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-block">
+  <div class="sec-sub" style="margin-bottom:16px;">Tools & Platforms</div>
+  <div class="tools-wrap">
+    <span class="tool t1">Microsoft Intune</span>
+    <span class="tool t2">JAMF Pro</span>
+    <span class="tool t3">Hexnode UEM</span>
+    <span class="tool t4">SCCM</span>
+    <span class="tool t5">ServiceNow</span>
+    <span class="tool t1">Citrix VDI</span>
+    <span class="tool t2">Active Directory</span>
+    <span class="tool t1">Azure AD</span>
+    <span class="tool t5">Windows 10/11</span>
+    <span class="tool t2">macOS</span>
+    <span class="tool t3">PowerShell</span>
+    <span class="tool t4">MS Office 365</span>
+    <span class="tool t1">Cisco NAC</span>
+    <span class="tool t5">BMC Remedy</span>
+    <span class="tool t3">JumpCloud</span>
+    <span class="tool t2">Kandji</span>
+  </div>
+</div>
+
+<!-- DASHBOARD: TICKET LOG -->
+<div class="sec-head">
+  <div class="sec-title">ServiceNow Ticket Log</div>
+  <div class="sec-line"></div>
+</div>
+<div class="sec-sub" style="margin-bottom:16px;">Final Sprint · Kotak Mahindra Bank · Feb 2025</div>
+
+<div class="dash-panel">
+  <div class="tab-bar">
+    <button class="tbtn active" onclick="ft('all',this)">All (14)</button>
+    <button class="tbtn" onclick="ft('resolved',this)">Resolved</button>
+  </div>
+  <div class="dash-header" style="margin-top:0;padding-top:10px;">
+    <div class="dash-htitle">🎫 Incident Records</div>
+    <div class="dash-hbadge">100% Resolved</div>
+  </div>
+  <table class="ticket-table">
+    <thead><tr>
+      <th>Ticket ID</th><th>Issue Description</th><th>Priority</th><th>Status</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sec-head">
+  <div class="sec-title">Experience & Education</div>
+  <div class="sec-line"></div>
+</div>
+<div class="exp-list">
+  <div class="exp-item">
+    <div class="exp-ico">🏦</div>
     <div>
-      <div class="page-title">IT Infrastructure Overview</div>
-      <div class="page-sub">Hyderabad · Greater Hyderabad Area</div>
-    </div>
-    <div class="topbar-right">
-      <div class="status-pill" style="background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.25); color: #60a5fa;"><div class="status-dot" style="background:#3b82f6;"></div>Handover Process Finalized</div>
-      <div class="date-chip" id="clock">14-Feb-2025</div>
+      <div class="exp-role">Desktop Support Engineer</div>
+      <div class="exp-co">Kotak Mahindra Bank Ltd.</div>
+      <div class="exp-loc">Hyderabad, Telangana · IT Infrastructure & End-User Solutions</div>
     </div>
   </div>
-
-  <!-- STAT CARDS -->
-  <div class="stats-grid">
-    <div class="stat-card blue">
-      <div class="stat-icon blue">🎫</div>
-      <div class="stat-num" id="ticket-count">0</div>
-    <div class="stat-label">Tickets Resolved Before Exit — Feb 14, 2025</div>
-    <div class="stat-change up">Final support cycle at Kotak Mahindra Bank</div>
-    </div>
-    <div class="stat-card green">
-      <div class="stat-icon green">✅</div>
-      <div class="stat-num" id="resolved-count">0</div>
-      <div class="stat-label">Resolved Tickets</div>
-      <div class="stat-change up">↑ 100% resolution rate</div>
-    </div>
-    <div class="stat-card amber">
-      <div class="stat-icon amber">💻</div>
-      <div class="stat-num" id="device-count">0</div>
-      <div class="stat-label">Managed Devices</div>
-      <div class="stat-change up">↑ Intune + JAMF + Hexnode</div>
-    </div>
-    <div class="stat-card red">
-      <div class="stat-icon red">⚠️</div>
-      <div class="stat-num" id="critical-count">0</div>
-      <div class="stat-label">Critical Issues</div>
-      <div class="stat-change dn">Final escalation closures before Feb 14, 2025</div>
+  <div class="exp-item">
+    <div class="exp-ico">🏥</div>
+    <div>
+      <div class="exp-role">IT Support Engineer</div>
+      <div class="exp-co">Ankura Hospitals</div>
+      <div class="exp-loc">Hyderabad, Telangana</div>
     </div>
   </div>
-
-  <!-- TICKETS + DEVICES -->
-  <div class="section-grid">
-
-    <!-- TICKETS TABLE -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">🎫 ServiceNow — Active Tickets</div>
-        <div class="panel-badge green">0 Handed Over</div>
-      </div>
-      <div class="tab-bar">
-        <button class="tab-btn active" onclick="filterTickets('all',this)">All</button>
-        <button class="tab-btn" onclick="filterTickets('open',this)">Open</button>
-        <button class="tab-btn" onclick="filterTickets('progress',this)">In Progress</button>
-        <button class="tab-btn" onclick="filterTickets('resolved',this)">Resolved</button>
-      </div>
-      <table class="ticket-table" id="ticket-table">
-        <thead>
-          <tr>
-            <th>Ticket ID</th>
-            <th>Issue</th>
-            <th>Priority</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="ticket-body"></tbody>
-      </table>
-    </div>
-
-    <!-- MDM OVERVIEW -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">📱 MDM Compliance</div>
-        <div class="panel-badge green">96.2% Compliant</div>
-      </div>
-      <div id="mdm-bars"></div>
-      <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
-        <div class="panel-title" style="margin-bottom:12px;">📊 Closure Velocity (Final Sprint)</div>
-        <div class="bar-chart" id="bar-chart"></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- BOTTOM ROW -->
-  <div class="section-grid-3">
-
-    <!-- DEVICE LIST -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">🖥️ Device Inventory</div>
-        <div class="panel-badge">248 Total</div>
-      </div>
-      <div id="device-list"></div>
-    </div>
-
-    <!-- ASSET MGMT -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">🗄️ Asset Management</div>
-      </div>
-      <div id="asset-donut" style="margin-bottom:16px;">
-        <svg viewBox="0 0 120 120" width="110" height="110" style="display:block;margin:0 auto;">
-          <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="16"/>
-          <circle cx="60" cy="60" r="45" fill="none" stroke="#3b82f6" stroke-width="16" stroke-dasharray="113 170" stroke-dashoffset="0" stroke-linecap="round"/>
-          <circle cx="60" cy="60" r="45" fill="none" stroke="#8b5cf6" stroke-width="16" stroke-dasharray="57 226" stroke-dashoffset="-113" stroke-linecap="round"/>
-          <circle cx="60" cy="60" r="45" fill="none" stroke="#06b6d4" stroke-width="16" stroke-dasharray="40 243" stroke-dashoffset="-170" stroke-linecap="round"/>
-          <circle cx="60" cy="60" r="45" fill="none" stroke="#10b981" stroke-width="16" stroke-dasharray="73 210" stroke-dashoffset="-210" stroke-linecap="round"/>
-          <text x="60" y="56" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700" font-family="JetBrains Mono">248</text>
-          <text x="60" y="70" text-anchor="middle" fill="#64748b" font-size="8">Assets</text>
-        </svg>
-      </div>
-      <div class="donut-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div><span>Windows PCs — 128</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6"></div><span>MacBooks — 64</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background:#06b6d4"></div><span>Mobile Devices — 44</span></div>
-        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div><span>Printers/Others — 12</span></div>
-      </div>
-    </div>
-
-    <!-- ACTIVITY LOG -->
-    <div class="panel">
-      <div class="panel-header">
-        <div class="panel-title">📋 Exit Day Activity Log</div>
-        <div class="panel-badge blue">Complete</div>
-      </div>
-      <div id="activity-log"></div>
-    </div>
-
-  </div>
-
-  <!-- TECH STACK FOOTER -->
-  <div class="panel" style="margin-top:0;">
-    <div class="panel-header">
-      <div class="panel-title">🛠️ Tools & Technologies Used</div>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;">
-      <span style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:#60a5fa;font-size:12px;padding:5px 14px;border-radius:8px;">Microsoft Intune</span>
-      <span style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:#a78bfa;font-size:12px;padding:5px 14px;border-radius:8px;">JAMF Pro</span>
-      <span style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2);color:#22d3ee;font-size:12px;padding:5px 14px;border-radius:8px;">Hexnode UEM</span>
-      <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:#fbbf24;font-size:12px;padding:5px 14px;border-radius:8px;">SCCM</span>
-      <span style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#34d399;font-size:12px;padding:5px 14px;border-radius:8px;">ServiceNow</span>
-      <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#f87171;font-size:12px;padding:5px 14px;border-radius:8px;">Citrix VDI</span>
-      <span style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);color:#818cf8;font-size:12px;padding:5px 14px;border-radius:8px;">Active Directory</span>
-      <span style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:#60a5fa;font-size:12px;padding:5px 14px;border-radius:8px;">Azure AD</span>
-      <span style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#34d399;font-size:12px;padding:5px 14px;border-radius:8px;">Windows 10/11</span>
-      <span style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:#a78bfa;font-size:12px;padding:5px 14px;border-radius:8px;">PowerShell</span>
+  <div class="exp-item">
+    <div class="exp-ico">🎬</div>
+    <div>
+      <div class="exp-role">IT Support Specialist</div>
+      <div class="exp-co">INOX Leisure Ltd.</div>
+      <div class="exp-loc">Desktop Management & Infrastructure Support</div>
     </div>
   </div>
+  <div class="exp-item">
+    <div class="exp-ico">🎓</div>
+    <div>
+      <div class="exp-role">B.Com (Computer Applications)</div>
+      <div class="exp-co">Acharya Nagarjuna University (ANU)</div>
+      <div class="exp-loc">Guntur, Andhra Pradesh</div>
+    </div>
+  </div>
+</div>
 
-</main>
+<!-- FOOTER -->
+<div class="footer">
+  <p style="margin-bottom:6px;">
+    <a href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank">LinkedIn</a>
+    &nbsp;·&nbsp; Venugopal Inti &nbsp;·&nbsp; Desktop Support Engineer
+    &nbsp;·&nbsp; Hyderabad, Telangana
+  </p>
+  <p>Open to IT Support, Desktop Engineering & Infrastructure roles · On-site · Hybrid · Remote</p>
+</div>
+
+</div>
 
 <script>
-// HARDCODED STEADY CLOCK FOR FINAL DAY
-document.getElementById('clock').textContent = "14-Feb-2025 · 17:30:00";
-
-// ANIMATE COUNTERS
-function animateCount(id,target,duration=1200){
-  let start=0,step=target/60;
-  const el=document.getElementById(id);
-  const interval=setInterval(()=>{
-    start=Math.min(start+step,target);
-    el.textContent=Math.floor(start);
-    if(start>=target)clearInterval(interval);
-  },duration/60);
+// COUNTERS
+function count(id,to,suffix=''){
+  let v=0,el=document.getElementById(id),step=to/60;
+  const iv=setInterval(()=>{
+    v=Math.min(v+step,to);
+    el.textContent=Math.floor(v)+(suffix||'');
+    if(v>=to)clearInterval(iv);
+  },1200/60);
 }
 setTimeout(()=>{
-  animateCount('ticket-count',14);     // Target changed to match your specific 14 tickets
-  animateCount('resolved-count',14);   // All 14 tickets successfully resolved
-  animateCount('device-count',248);
-  animateCount('critical-count',0); 
-},300);
-
-// CHANGED: REPLACED WITH YOUR SPECIFIC 14 TICKETS LIST
-const tickets=[
-  {id:'INC2154442',issue:'SCCM deployment failed',priority:'medium',status:'resolved'},
-  {id:'INC2168027',issue:'Email delivery delay',priority:'medium',status:'resolved'},
-  {id:'INC2175843',issue:'Device compliance failure',priority:'high',status:'resolved'},
-  {id:'INC2176257',issue:'Citrix login issue',priority:'high',status:'resolved'},
-  {id:'INC2177841',issue:'Application crash report',priority:'medium',status:'resolved'},
-  {id:'INC2175994',issue:'WiFi connectivity issue',priority:'low',status:'resolved'},
-  {id:'INC2230199',issue:'System performance degradation',priority:'high',status:'resolved'},
-  {id:'INC2266498',issue:'VPN client update required',priority:'medium',status:'resolved'},
-  {id:'INC2266405',issue:'Password reset request',priority:'low',status:'resolved'},
-  {id:'INC2265791',issue:'Exchange mailbox issue',priority:'medium',status:'resolved'},
-  {id:'INC2266552',issue:'Patch deployment pending',priority:'medium',status:'resolved'},
-  {id:'INC2266441',issue:'USB device restriction',priority:'low',status:'resolved'},
-  {id:'INC2271600',issue:'Desktop reboot loop',priority:'high',status:'resolved'},
-  {id:'INC2274029',issue:'Azure AD sync issue',priority:'medium',status:'resolved'}
-];
-
-function renderTickets(filter){
-  const tbody=document.getElementById('ticket-body');
-  const data=filter==='all'?tickets:tickets.filter(t=>t.status===filter);
-  tbody.innerHTML=data.map(t=>`
-    <tr>
-      <td><span class="ticket-id">${t.id}</span></td>
-      <td style="font-size:12.5px;max-width:200px;">${t.issue}</td>
-      <td><span class="priority-pill ${t.priority}">${t.priority}</span></td>
-      <td><span class="status-tag ${t.status}">${t.status==='progress'?'In Progress':t.status.charAt(0).toUpperCase()+t.status.slice(1)}</span></td>
-    </tr>`).join('');
-}
-renderTickets('all');
-
-function filterTickets(filter,btn){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderTickets(filter);
-}
-
-// MDM BARS
-const mdmData=[
-  {label:'Microsoft Intune',val:96,fill:'fill-blue'},
-  {label:'JAMF Pro (macOS)',val:94,fill:'fill-purple'},
-  {label:'Hexnode (Mobile)',val:98,fill:'fill-green'},
-  {label:'Patch Compliance',val:89,fill:'fill-amber'},
-];
-document.getElementById('mdm-bars').innerHTML=mdmData.map(m=>`
-  <div class="mdm-item">
-    <div class="mdm-label"><span>${m.label}</span><span>${m.val}%</span></div>
-    <div class="progress-bar"><div class="progress-fill ${m.fill}" style="width:0%" data-w="${m.val}%"></div></div>
-  </div>`).join('');
-setTimeout(()=>{
-  document.querySelectorAll('.progress-fill').forEach(el=>{
-    el.style.width=el.dataset.w;
-  });
+  count('c1',6,'+');
+  count('c2',248);
+  count('c3',147);
+  count('c4',3);
 },400);
 
-// TICKET TREND / SPRINT CHART FOR FINAL WEEK (Feb 10 - Feb 14)
-const days=['10th','11th','12th','13th','14th','Exit','Done'];
-const vals=[5,4,3,2,0,0,0]; // Visual trace showing countdown clearance of your active logs
-const maxV=Math.max(...vals);
-document.getElementById('bar-chart').innerHTML=days.map((d,i)=>`
-  <div class="bar-wrap">
-    <div class="bar" style="height:0;background:linear-gradient(180deg,#10b981,#3b82f6);margin-top:auto;" data-h="${Math.round((vals[i]/maxV)*70)}px"></div>
-    <span class="bar-label">${d}</span>
+// SKILLS
+const skills=[
+  {n:'Microsoft Intune',v:95},{n:'JAMF Pro',v:90},
+  {n:'SCCM / Endpoint Mgmt',v:88},{n:'ServiceNow (ITSM)',v:92},
+  {n:'Windows 10/11 Admin',v:97},{n:'Citrix VDI',v:85},
+  {n:'Azure AD / Entra ID',v:87},{n:'PowerShell Scripting',v:80},
+];
+document.getElementById('skill-grid').innerHTML=skills.map(s=>`
+  <div class="skill-row">
+    <div class="skill-top">
+      <span class="skill-name-l">${s.n}</span>
+      <span class="skill-pct">${s.v}%</span>
+    </div>
+    <div class="skill-bar"><div class="skill-fill" style="width:0%" data-w="${s.v}%"></div></div>
   </div>`).join('');
 setTimeout(()=>{
-  document.querySelectorAll('.bar').forEach(b=>{
-    b.style.height=b.dataset.h;
-  });
-},500);
+  document.querySelectorAll('.skill-fill').forEach(e=>e.style.width=e.dataset.w);
+},600);
 
-// DEVICE LIST
-const devices=[
-  {icon:'win',emoji:'💻',name:'DESK-WIN-0142','sub':'Windows 11 Pro · Intune Managed','status':'online','statusText':'Online'},
-  {icon:'mac',emoji:'🍎',name:'MAC-BOOK-0087','sub':'macOS Ventura · JAMF Enrolled','status':'online','statusText':'Online'},
-  {icon:'mob',emoji:'📱',name:'AND-MOB-0234','sub':'Android 13 · Hexnode MDM','status':'online','statusText':'Online'},
-  {icon:'win',emoji:'💻',name:'DESK-WIN-0098','sub':'Windows 10 · Patch Compliant','status':'online','statusText':'Online'},
-  {icon:'win',emoji:'💻',name:'DESK-WIN-0201','sub':'Windows 11 · VDI Citrix','status':'online','statusText':'Online'},
+// TICKETS
+const tickets=[
+  {id:'INC2154442',issue:'SCCM deployment failed — Office 365 packages',priority:'medium',status:'resolved'},
+  {id:'INC2168027',issue:'Email delivery delay — Exchange Online sync',priority:'medium',status:'resolved'},
+  {id:'INC2175843',issue:'Device compliance failure — Intune policy',priority:'high',status:'resolved'},
+  {id:'INC2176257',issue:'Citrix login issue — VDI session timeout',priority:'high',status:'resolved'},
+  {id:'INC2177841',issue:'Application crash — Finacle banking app',priority:'medium',status:'resolved'},
+  {id:'INC2175994',issue:'WiFi connectivity — Cisco NAC auth failure',priority:'low',status:'resolved'},
+  {id:'INC2230199',issue:'System performance degradation — RAM issue',priority:'high',status:'resolved'},
+  {id:'INC2266498',issue:'VPN client update — Cisco AnyConnect',priority:'medium',status:'resolved'},
+  {id:'INC2266405',issue:'Password reset — Active Directory account',priority:'low',status:'resolved'},
+  {id:'INC2265791',issue:'Exchange mailbox issue — 2FA not sending',priority:'medium',status:'resolved'},
+  {id:'INC2266552',issue:'Patch deployment pending — KB5034441',priority:'medium',status:'resolved'},
+  {id:'INC2266441',issue:'USB device restriction policy override',priority:'low',status:'resolved'},
+  {id:'INC2271600',issue:'Desktop reboot loop — driver conflict',priority:'high',status:'resolved'},
+  {id:'INC2274029',issue:'Azure AD sync issue — hybrid join failure',priority:'medium',status:'resolved'},
 ];
-document.getElementById('device-list').innerHTML=devices.map(d=>`
-  <div class="device-item">
-    <div class="device-icon ${d.icon}">${d.emoji}</div>
-    <div>
-      <div class="device-name" style="font-family:'JetBrains Mono',monospace;font-size:11px;">${d.name}</div>
-      <div class="device-sub">${d.sub}</div>
-    </div>
-    <div class="device-status ${d.status}">${d.statusText}</div>
-  </div>`).join('');
 
-// HISTORICAL ACTIVITY LOG FOR FEB 14, 2025 (LAST WORKING DAY TIMELINE)
-const logs=[
-  {dot:'green',text:'Final handover documentation signed off and submitted to IT Operations lead','time':'17:15'},
-  {dot:'blue',text:'All pending ServiceNow ticket queues verified cleanly closed (0 pending backlog)','time':'16:30'},
-  {dot:'purple',text:'Admin privileges and access rights successfully unassigned from local domain profile','time':'15:00'},
-  {dot:'amber',text:'Physical asset verification completed: Master inventory tracker updated for Hyderabad hub','time':'14:15'},
-  {dot:'green',text:'Knowledge Transfer (KT) sessions completed for incoming engineers on Intune/JAMF profiles','time':'12:00'},
-  {dot:'blue',text:'Final verification checks on Azure AD/Intune custom deployment scripts completed','time':'11:15'},
-  {dot:'purple',text:'Verification loop complete on branch VDI & Citrix configuration handovers','time':'10:30'},
-  {dot:'green',text:'Final morning shift stand-up at Kotak Mahindra Bank: Sync completed successfully','time':'09:30'}
-];
-document.getElementById('activity-log').innerHTML=logs.map(l=>`
-  <div class="log-item">
-    <div class="log-dot ${l.dot}"></div>
-    <div>
-      <div class="log-text">${l.text}</div>
-      <div class="log-time" style="color:var(--soft); font-weight:600;">${l.time} Hrs</div>
-    </div>
-  </div>`).join('');
+function ft(f,btn){
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const data=f==='all'?tickets:tickets.filter(t=>t.status===f);
+  document.getElementById('tbody').innerHTML=data.map(t=>`
+    <tr>
+      <td><span class="tid">${t.id}</span></td>
+      <td style="font-size:12px;">${t.issue}</td>
+      <td><span class="ppill ${t.priority}">${t.priority}</span></td>
+      <td><span class="stag ${t.status}">✓ Resolved</span></td>
+    </tr>`).join('');
+}
+ft('all',document.querySelector('.tbtn.active'));
 </script>
 </body>
 </html>
