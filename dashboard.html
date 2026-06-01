@@ -394,7 +394,7 @@ body::before{
   <div class="appr-card">
     <div class="quote-mark">"</div>
     <div class="appr-text">
-      Your <strong>expertise and quick response</strong> to any sort of Cisco Network related issues and Applications like <strong>Finacle, Kraman, 2FA</strong> etc were invaluable and helped prevent what could have been a significant disruption to our operations. Your professional demeanor and patience in handling the situation did not go unnoticed. Your <strong>dedication to ensuring the smooth functioning of our IT infrastructure is a critical component of our team's success.</strong>
+      Dear Team, Dear Inti Venugopal Your <strong>expertise and quick response</strong> to any sort of Cisco Network related issues and Applications like <strong>Finacle, Kraman, 2FA</strong> etc were invaluable and helped prevent what could have been a significant disruption to our operations. Your professional demeanor and patience in handling the situation did not go unnoticed. Your <strong>dedication to ensuring the smooth functioning of our IT infrastructure is a critical component of our team's success.</strong>
     </div>
     <div class="appr-meta">
       <div class="appr-icon">⭐</div>
@@ -465,4 +465,168 @@ body::before{
 <div class="tools-block">
   <div class="sec-sub" style="margin-bottom:16px;">Tools & Platforms</div>
   <div class="tools-wrap">
-    <span class="tool t1">Microsoft Intun
+    <span class="tool t1">Microsoft Intune</span>
+    <span class="tool t2">JAMF Pro</span>
+    <span class="tool t3">Hexnode UEM</span>
+    <span class="tool t4">SCCM</span>
+    <span class="tool t5">ServiceNow</span>
+    <span class="tool t1">Citrix VDI</span>
+    <span class="tool t2">Active Directory</span>
+    <span class="tool t1">Azure AD</span>
+    <span class="tool t5">Windows 10/11</span>
+    <span class="tool t2">macOS</span>
+    <span class="tool t3">PowerShell</span>
+    <span class="tool t4">MS Office 365</span>
+    <span class="tool t1">Cisco NAC</span>
+    <span class="tool t5">BMC Remedy</span>
+    <span class="tool t3">JumpCloud</span>
+    <span class="tool t2">Kandji</span>
+  </div>
+</div>
+
+<!-- DASHBOARD: TICKET LOG -->
+<div class="sec-head">
+  <div class="sec-title">ServiceNow Ticket Log</div>
+  <div class="sec-line"></div>
+</div>
+<div class="sec-sub" style="margin-bottom:16px;">Final Sprint · Kotak Mahindra Bank · Feb 2025</div>
+
+<div class="dash-panel">
+  <div class="tab-bar">
+    <button class="tbtn active" onclick="ft('all',this)">All (14)</button>
+    <button class="tbtn" onclick="ft('resolved',this)">Resolved</button>
+  </div>
+  <div class="dash-header" style="margin-top:0;padding-top:10px;">
+    <div class="dash-htitle">🎫 Incident Records</div>
+    <div class="dash-hbadge">100% Resolved</div>
+  </div>
+  <table class="ticket-table">
+    <thead><tr>
+      <th>Ticket ID</th><th>Issue Description</th><th>Priority</th><th>Status</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sec-head">
+  <div class="sec-title">Experience & Education</div>
+  <div class="sec-line"></div>
+</div>
+<div class="exp-list">
+  <div class="exp-item">
+    <div class="exp-ico">🏦</div>
+    <div>
+      <div class="exp-role">Desktop Support Engineer</div>
+      <div class="exp-co">Kotak Mahindra Bank Ltd.</div>
+      <div class="exp-loc">Hyderabad, Telangana · IT Infrastructure & End-User Solutions</div>
+    </div>
+  </div>
+  <div class="exp-item">
+    <div class="exp-ico">🏥</div>
+    <div>
+      <div class="exp-role">IT Support Engineer</div>
+      <div class="exp-co">Ankura Hospitals</div>
+      <div class="exp-loc">Hyderabad, Telangana</div>
+    </div>
+  </div>
+  <div class="exp-item">
+    <div class="exp-ico">🎬</div>
+    <div>
+      <div class="exp-role">IT Support Specialist</div>
+      <div class="exp-co">INOX Leisure Ltd.</div>
+      <div class="exp-loc">Desktop Management & Infrastructure Support</div>
+    </div>
+  </div>
+  <div class="exp-item">
+    <div class="exp-ico">🎓</div>
+    <div>
+      <div class="exp-role">B.Com (Computer Applications)</div>
+      <div class="exp-co">Acharya Nagarjuna University (ANU)</div>
+      <div class="exp-loc">Guntur, Andhra Pradesh</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p style="margin-bottom:6px;">
+    <a href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank">LinkedIn</a>
+    &nbsp;·&nbsp; Venugopal Inti &nbsp;·&nbsp; Desktop Support Engineer
+    &nbsp;·&nbsp; Hyderabad, Telangana
+  </p>
+  <p>Open to IT Support, Desktop Engineering & Infrastructure roles · On-site · Hybrid · Remote</p>
+</div>
+
+</div>
+
+<script>
+// COUNTERS
+function count(id,to,suffix=''){
+  let v=0,el=document.getElementById(id),step=to/60;
+  const iv=setInterval(()=>{
+    v=Math.min(v+step,to);
+    el.textContent=Math.floor(v)+(suffix||'');
+    if(v>=to)clearInterval(iv);
+  },1200/60);
+}
+setTimeout(()=>{
+  count('c1',6,'+');
+  count('c2',248);
+  count('c3',147);
+  count('c4',3);
+},400);
+
+// SKILLS
+const skills=[
+  {n:'Microsoft Intune',v:95},{n:'JAMF Pro',v:90},
+  {n:'SCCM / Endpoint Mgmt',v:88},{n:'ServiceNow (ITSM)',v:92},
+  {n:'Windows 10/11 Admin',v:97},{n:'Citrix VDI',v:85},
+  {n:'Azure AD / Entra ID',v:87},{n:'PowerShell Scripting',v:80},
+];
+document.getElementById('skill-grid').innerHTML=skills.map(s=>`
+  <div class="skill-row">
+    <div class="skill-top">
+      <span class="skill-name-l">${s.n}</span>
+      <span class="skill-pct">${s.v}%</span>
+    </div>
+    <div class="skill-bar"><div class="skill-fill" style="width:0%" data-w="${s.v}%"></div></div>
+  </div>`).join('');
+setTimeout(()=>{
+  document.querySelectorAll('.skill-fill').forEach(e=>e.style.width=e.dataset.w);
+},600);
+
+// TICKETS
+const tickets=[
+  {id:'INC2154442',issue:'SCCM deployment failed — Office 365 packages',priority:'medium',status:'resolved'},
+  {id:'INC2168027',issue:'Email delivery delay — Exchange Online sync',priority:'medium',status:'resolved'},
+  {id:'INC2175843',issue:'Device compliance failure — Intune policy',priority:'high',status:'resolved'},
+  {id:'INC2176257',issue:'Citrix login issue — VDI session timeout',priority:'high',status:'resolved'},
+  {id:'INC2177841',issue:'Application crash — Finacle banking app',priority:'medium',status:'resolved'},
+  {id:'INC2175994',issue:'WiFi connectivity — Cisco NAC auth failure',priority:'low',status:'resolved'},
+  {id:'INC2230199',issue:'System performance degradation — RAM issue',priority:'high',status:'resolved'},
+  {id:'INC2266498',issue:'VPN client update — Cisco AnyConnect',priority:'medium',status:'resolved'},
+  {id:'INC2266405',issue:'Password reset — Active Directory account',priority:'low',status:'resolved'},
+  {id:'INC2265791',issue:'Exchange mailbox issue — 2FA not sending',priority:'medium',status:'resolved'},
+  {id:'INC2266552',issue:'Patch deployment pending — KB5034441',priority:'medium',status:'resolved'},
+  {id:'INC2266441',issue:'USB device restriction policy override',priority:'low',status:'resolved'},
+  {id:'INC2271600',issue:'Desktop reboot loop — driver conflict',priority:'high',status:'resolved'},
+  {id:'INC2274029',issue:'Azure AD sync issue — hybrid join failure',priority:'medium',status:'resolved'},
+];
+
+function ft(f,btn){
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const data=f==='all'?tickets:tickets.filter(t=>t.status===f);
+  document.getElementById('tbody').innerHTML=data.map(t=>`
+    <tr>
+      <td><span class="tid">${t.id}</span></td>
+      <td style="font-size:12px;">${t.issue}</td>
+      <td><span class="ppill ${t.priority}">${t.priority}</span></td>
+      <td><span class="stag ${t.status}">✓ Resolved</span></td>
+    </tr>`).join('');
+}
+ft('all',document.querySelector('.tbtn.active'));
+</script>
+</body>
+</html>
