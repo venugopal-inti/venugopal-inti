@@ -333,8 +333,76 @@ body::before{
       <a class="hero-cta2" href="https://drive.google.com/uc?export=download&id=1ZyJYHqvEwnhvzpy1g2sj6MCytQoWogzX" target="_blank">⬇ Resume</a>
     </div>
   </div>
-  <div class="hero-avatar">VI</div>
+  <!-- PROFILE CARD -->
+  <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:14px;">
+
+    <!-- Photo with glow ring -->
+    <div style="position:relative;width:160px;height:160px;">
+      <!-- Outer glow ring -->
+      <div style="
+        position:absolute;inset:-8px;border-radius:50%;
+        background:conic-gradient(var(--gold),transparent,var(--gold2),transparent,var(--gold));
+        animation:spin 6s linear infinite;opacity:0.35;
+      "></div>
+      <div style="position:absolute;inset:-3px;border-radius:50%;border:1px solid rgba(201,168,76,0.2);"></div>
+      <!-- Photo circle -->
+      <div style="
+        position:absolute;inset:0;border-radius:50%;overflow:hidden;
+        border:2px solid rgba(201,168,76,0.4);
+        box-shadow:0 0 32px rgba(201,168,76,0.2);
+      ">
+        <img src="photo.jpg" alt="Venugopal Inti"
+          style="width:100%;height:100%;object-fit:cover;object-position:top;"
+          onerror="this.style.display='none';document.getElementById('vi-fallback').style.display='flex';"
+        >
+        <!-- Fallback if photo not loaded -->
+        <div id="vi-fallback" style="
+          display:none;width:100%;height:100%;
+          background:linear-gradient(135deg,#0f1628,#1a2240);
+          align-items:center;justify-content:center;
+        ">
+          <span style="
+            font-family:'Playfair Display',serif;font-size:56px;font-weight:800;
+            background:linear-gradient(135deg,var(--gold2),var(--gold));
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+          ">VI</span>
+        </div>
+      </div>
+      <!-- Orbit dot -->
+      <div style="position:absolute;top:50%;left:50%;width:100%;height:100%;animation:orbit 4s linear infinite;transform-origin:0 0;">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 8px var(--gold);position:absolute;top:-84px;left:-4px;"></div>
+      </div>
+    </div>
+
+    <!-- Name label -->
+    <div style="text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold2);letter-spacing:1px;">Venugopal Inti</div>
+      <div style="font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:3px;">Desktop Engineer</div>
+    </div>
+
+    <!-- Mini stat pills -->
+    <div style="display:flex;flex-direction:column;gap:7px;width:160px;">
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:7px 12px;">
+        <span style="font-size:13px;">⏱️</span>
+        <span style="font-size:11px;color:var(--soft);">6+ Yrs Experience</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:8px;padding:7px 12px;">
+        <span style="font-size:13px;">📍</span>
+        <span style="font-size:11px;color:var(--soft);">Hyderabad, India</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(74,144,217,0.06);border:1px solid rgba(74,144,217,0.15);border-radius:8px;padding:7px 12px;">
+        <span style="font-size:13px;">💼</span>
+        <span style="font-size:11px;color:var(--soft);">Open to Work</span>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+<style>
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+</style>
 
 <!-- STATS -->
 <div class="stats-row animate">
