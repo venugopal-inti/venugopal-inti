@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Venugopal Inti — IT Infrastructure Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<!-- LinkedIn Badge Script (Step 1) -->
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 <style>
 :root {
   --bg:#05080f;--s1:#080d1a;--s2:#0c1220;--card:#0f1628;
@@ -27,151 +29,57 @@ body::before{
   background-size:auto,auto,48px 48px,48px 48px;
 }
 .wrap{max-width:960px;margin:0 auto;padding:0 24px 80px;position:relative;z-index:1;}
-
-/* TOPBAR */
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 0 36px;border-bottom:1px solid var(--border);margin-bottom:56px;
-  flex-wrap:wrap;gap:12px;
-}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0 36px;border-bottom:1px solid var(--border);margin-bottom:56px;flex-wrap:wrap;gap:12px;}
 .topbar-logo{display:flex;align-items:center;gap:12px;}
-.logo-mark{
-  width:40px;height:40px;border-radius:10px;
-  background:linear-gradient(135deg,var(--gold),#8b6914);
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:700;color:#fff;font-family:'Playfair Display',serif;
-}
+.logo-mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#8b6914);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;font-family:'Playfair Display',serif;}
 .logo-label{font-size:13px;color:var(--soft);letter-spacing:0.5px;}
 .topbar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.open-badge{
-  display:flex;align-items:center;gap:7px;
-  background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);
-  border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#4ade80;
-}
+.open-badge{display:flex;align-items:center;gap:7px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#4ade80;}
 .pulse{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.4);}50%{opacity:.7;box-shadow:0 0 0 5px rgba(34,197,94,0);}}
-
-/* DOWNLOAD RESUME BTN */
-.dl-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(135deg,var(--gold),#8b6914);
-  color:#fff;font-weight:700;font-size:13px;
-  padding:9px 20px;border-radius:10px;text-decoration:none;
-  box-shadow:0 4px 20px rgba(201,168,76,0.25);
-  transition:transform .2s,box-shadow .2s;letter-spacing:0.2px;
-  border:none;cursor:pointer;font-family:'Manrope',sans-serif;
-}
+.dl-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#8b6914);color:#fff;font-weight:700;font-size:13px;padding:9px 20px;border-radius:10px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.25);transition:transform .2s,box-shadow .2s;letter-spacing:0.2px;border:none;cursor:pointer;font-family:'Manrope',sans-serif;}
 .dl-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,0.4);}
-
-/* HERO */
 .hero{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:64px;}
 .hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
 .eyebrow-line{width:32px;height:1px;background:var(--gold);}
 .eyebrow-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;}
-.hero-name{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(40px,6vw,64px);font-weight:800;line-height:1.05;letter-spacing:-1px;
-  background:linear-gradient(135deg,#fff 0%,var(--gold2) 50%,#fff 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  margin-bottom:12px;
-}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,64px);font-weight:800;line-height:1.05;letter-spacing:-1px;background:linear-gradient(135deg,#fff 0%,var(--gold2) 50%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
 .hero-role{font-size:15px;color:var(--soft);line-height:1.8;max-width:520px;margin-bottom:24px;}
 .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
 .tag{font-size:11px;padding:5px 13px;border-radius:6px;font-weight:600;letter-spacing:0.3px;background:var(--gold3);border:1px solid rgba(201,168,76,0.25);color:var(--gold2);}
 .tag.alt{background:rgba(74,144,217,0.1);border-color:rgba(74,144,217,0.25);color:#93c5fd;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.hero-cta{
-  display:inline-flex;align-items:center;gap:10px;
-  background:linear-gradient(135deg,var(--gold),#8b6914);
-  color:#fff;font-weight:700;font-size:14px;
-  padding:13px 28px;border-radius:10px;text-decoration:none;
-  box-shadow:0 4px 24px rgba(201,168,76,0.3);transition:transform .2s,box-shadow .2s;letter-spacing:0.3px;
-}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),#8b6914);color:#fff;font-weight:700;font-size:14px;padding:13px 28px;border-radius:10px;text-decoration:none;box-shadow:0 4px 24px rgba(201,168,76,0.3);transition:transform .2s,box-shadow .2s;letter-spacing:0.3px;}
 .hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,0.45);}
-.hero-cta2{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);
-  color:var(--gold2);font-weight:700;font-size:14px;
-  padding:13px 24px;border-radius:10px;text-decoration:none;
-  transition:all .2s;letter-spacing:0.3px;
-}
+.hero-cta2{display:inline-flex;align-items:center;gap:10px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold2);font-weight:700;font-size:14px;padding:13px 24px;border-radius:10px;text-decoration:none;transition:all .2s;letter-spacing:0.3px;}
 .hero-cta2:hover{background:rgba(201,168,76,0.18);transform:translateY(-2px);}
-.hero-avatar{
-  width:160px;height:160px;border-radius:20px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--s2),var(--card));
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:52px;font-weight:800;color:var(--gold);
-  position:relative;overflow:hidden;
-}
-.hero-avatar::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.08),transparent);}
-
-/* SECTION HEADING */
 .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:8px;}
 .sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
 .sec-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);white-space:nowrap;}
 .sec-sub{font-size:12px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:24px;}
-
-/* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:60px;}
-.stat{
-  background:var(--card);border:1px solid var(--border2);border-radius:14px;
-  padding:20px 16px;text-align:center;position:relative;overflow:hidden;
-  transition:border-color .2s,transform .2s;
-}
+.stat{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:20px 16px;text-align:center;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;}
 .stat:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);}
-.stat::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .2s;
-}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .2s;}
 .stat:hover::before{opacity:1;}
 .stat-n{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:var(--gold2);line-height:1;}
 .stat-l{font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:0.3px;}
 .stat-c{font-size:11px;margin-top:8px;color:var(--green);}
-
-/* APPRECIATION */
 .appr-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:60px;}
-.appr-card{
-  background:var(--card);border:1px solid var(--border2);border-radius:16px;
-  padding:26px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;
-}
+.appr-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:26px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;}
 .appr-card:hover{border-color:rgba(201,168,76,0.25);transform:translateY(-3px);}
 .appr-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .quote-mark{font-family:'Playfair Display',serif;font-size:56px;color:var(--gold);opacity:0.2;line-height:.8;margin-bottom:10px;}
 .appr-text{font-size:13px;line-height:1.8;color:#b0bdc9;margin-bottom:20px;}
 .appr-text strong{color:var(--gold2);}
 .appr-meta{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--border2);}
-.appr-icon{
-  width:36px;height:36px;border-radius:9px;
-  background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.05));
-  border:1px solid rgba(201,168,76,0.2);
-  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
-}
+.appr-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
 .appr-name{font-size:13px;font-weight:600;color:var(--text);}
 .appr-role{font-size:11px;color:var(--muted);margin-top:1px;}
-.appr-badge{
-  margin-left:auto;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;
-  background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);color:var(--gold);
-}
-
-/* CERT */
-.cert-card{
-  background:linear-gradient(135deg,#0f1a10,#0c1a28);
-  border:1px solid rgba(201,168,76,0.3);border-radius:18px;
-  padding:32px 36px;margin-bottom:60px;
-  display:flex;align-items:center;gap:32px;position:relative;overflow:hidden;
-}
-.cert-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(201,168,76,0.06),transparent);
-  pointer-events:none;
-}
-.cert-seal{
-  width:80px;height:80px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--gold),#7a5a10);
-  display:flex;align-items:center;justify-content:center;font-size:30px;
-  box-shadow:0 0 0 4px rgba(201,168,76,0.2),0 0 0 8px rgba(201,168,76,0.08);
-}
+.appr-badge{margin-left:auto;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);color:var(--gold);}
+.cert-card{background:linear-gradient(135deg,#0f1a10,#0c1a28);border:1px solid rgba(201,168,76,0.3);border-radius:18px;padding:32px 36px;margin-bottom:60px;display:flex;align-items:center;gap:32px;position:relative;overflow:hidden;}
+.cert-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(201,168,76,0.06),transparent);pointer-events:none;}
+.cert-seal{width:80px;height:80px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--gold),#7a5a10);display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 0 0 4px rgba(201,168,76,0.2),0 0 0 8px rgba(201,168,76,0.08);}
 .cert-content{flex:1;}
 .cert-issued{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
 .cert-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;}
@@ -179,8 +87,6 @@ body::before{
 .cert-detail strong{color:var(--gold2);}
 .cert-tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
 .cert-tag{font-size:11px;padding:4px 12px;border-radius:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#4ade80;font-weight:600;}
-
-/* SKILLS */
 .skills-block{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:28px;margin-bottom:20px;}
 .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 .skill-row{display:flex;flex-direction:column;gap:6px;}
@@ -189,8 +95,6 @@ body::before{
 .skill-pct{color:var(--gold2);font-family:'JetBrains Mono',monospace;font-weight:600;}
 .skill-bar{height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;}
 .skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 1.2s ease;}
-
-/* TOOLS */
 .tools-block{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:28px;margin-bottom:60px;}
 .tools-wrap{display:flex;flex-wrap:wrap;gap:10px;}
 .tool{font-size:12px;padding:7px 16px;border-radius:8px;font-weight:600;transition:all .2s;cursor:default;}
@@ -200,8 +104,6 @@ body::before{
 .tool.t4{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:#fcd34d;}
 .tool.t5{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#86efac;}
 .tool:hover{transform:translateY(-2px);filter:brightness(1.2);}
-
-/* TICKET TABLE */
 .dash-panel{background:var(--s2);border:1px solid var(--border2);border-radius:18px;overflow:hidden;margin-bottom:60px;}
 .tab-bar{display:flex;gap:4px;padding:12px 16px 0;}
 .tbtn{padding:6px 14px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s;font-family:'Manrope',sans-serif;}
@@ -221,31 +123,13 @@ body::before{
 .ppill.low{background:rgba(34,197,94,0.12);color:#86efac;}
 .stag{font-size:10px;padding:2px 8px;border-radius:5px;font-weight:600;}
 .stag.resolved{background:rgba(34,197,94,0.12);color:#86efac;}
-
-/* EXPERIENCE TIMELINE */
 .exp-timeline{position:relative;padding-left:28px;margin-bottom:60px;}
-.exp-timeline::before{
-  content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;
-  background:linear-gradient(180deg,var(--gold),rgba(201,168,76,0.1));
-}
-.exp-item{
-  position:relative;background:var(--card);border:1px solid var(--border2);
-  border-radius:16px;padding:22px 24px;margin-bottom:16px;
-  transition:border-color .2s,transform .2s;
-}
+.exp-timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--gold),rgba(201,168,76,0.1));}
+.exp-item{position:relative;background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:22px 24px;margin-bottom:16px;transition:border-color .2s,transform .2s;}
 .exp-item:hover{border-color:rgba(201,168,76,0.25);transform:translateX(4px);}
-.exp-item::before{
-  content:'';position:absolute;left:-23px;top:22px;
-  width:12px;height:12px;border-radius:50%;
-  background:var(--gold);border:2px solid var(--bg);
-  box-shadow:0 0 8px rgba(201,168,76,0.5);
-}
+.exp-item::before{content:'';position:absolute;left:-23px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);box-shadow:0 0 8px rgba(201,168,76,0.5);}
 .exp-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:12px;}
-.exp-ico{
-  width:44px;height:44px;border-radius:12px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:20px;
-  background:var(--gold3);border:1px solid rgba(201,168,76,0.2);
-}
+.exp-ico{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--gold3);border:1px solid rgba(201,168,76,0.2);}
 .exp-role{font-size:15px;font-weight:700;color:var(--text);}
 .exp-co{font-size:13px;color:var(--gold2);margin-top:2px;font-weight:600;}
 .exp-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:3px;}
@@ -253,42 +137,64 @@ body::before{
 .exp-desc{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
 .exp-pt{font-size:12px;color:var(--soft);display:flex;align-items:flex-start;gap:7px;line-height:1.5;}
 .exp-pt::before{content:'▸';color:var(--gold);flex-shrink:0;margin-top:1px;}
-
-/* EDUCATION */
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:60px;}
-.edu-card{
-  background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:22px;
-  transition:border-color .2s,transform .2s;
-}
+.edu-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:22px;transition:border-color .2s,transform .2s;}
 .edu-card:hover{border-color:rgba(201,168,76,0.25);transform:translateY(-3px);}
 .edu-icon{font-size:28px;margin-bottom:12px;}
 .edu-deg{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .edu-uni{font-size:12px;color:var(--gold2);font-weight:600;}
 .edu-loc{font-size:11px;color:var(--muted);margin-top:3px;}
-.edu-status{
-  display:inline-block;margin-top:10px;font-size:10px;padding:3px 10px;
-  border-radius:20px;font-weight:600;
-}
-.edu-completed{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:#4ade80;}
+.edu-status{display:inline-block;margin-top:10px;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:600;}
 .edu-ongoing{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:#fcd34d;}
 
-/* FOOTER */
+/* ===== LINKEDIN CONNECT SECTION ===== */
+.linkedin-section{ margin-bottom:60px; }
+.linkedin-badge-wrapper{
+  background:linear-gradient(135deg,rgba(10,102,194,0.08),rgba(201,168,76,0.04));
+  border:1px solid rgba(10,102,194,0.3);
+  border-radius:20px;padding:36px;
+  display:flex;align-items:center;gap:40px;
+  position:relative;overflow:hidden;flex-wrap:wrap;
+}
+.linkedin-badge-wrapper::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(10,102,194,0.6),var(--gold),rgba(10,102,194,0.6),transparent);
+}
+.linkedin-badge-wrapper::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 40% 80% at 90% 50%,rgba(10,102,194,0.05),transparent);
+  pointer-events:none;
+}
+.linkedin-badge-text{ flex:1;min-width:220px;position:relative;z-index:1; }
+.linkedin-badge-text h3{
+  font-family:'Playfair Display',serif;font-size:20px;
+  font-weight:700;color:var(--text);margin-bottom:10px;
+}
+.linkedin-badge-text p{ font-size:13px;color:var(--soft);line-height:1.8;margin-bottom:22px; }
+.linkedin-connect-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#0a66c2,#0854a3);
+  color:#fff;font-weight:700;font-size:13px;
+  padding:11px 24px;border-radius:10px;text-decoration:none;
+  box-shadow:0 4px 20px rgba(10,102,194,0.35);
+  transition:transform .2s,box-shadow .2s;
+}
+.linkedin-connect-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(10,102,194,0.5);}
+.linkedin-badge-embed{ flex-shrink:0;position:relative;z-index:1; }
+
 .footer{text-align:center;padding-top:40px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);letter-spacing:0.5px;}
 .footer a{color:var(--gold);text-decoration:none;}
 .footer a:hover{color:var(--gold2);}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .animate{animation:fadeUp .6s ease both;}
-
 @media(max-width:760px){
   .hero{grid-template-columns:1fr;}
-  .hero-avatar{display:none;}
   .stats-row{grid-template-columns:1fr 1fr;}
   .appr-grid{grid-template-columns:1fr;}
-  .skill-grid,.edu-grid{grid-template-columns:1fr;}
+  .skill-grid{grid-template-columns:1fr;}
   .cert-card{flex-direction:column;gap:16px;}
   .exp-desc{grid-template-columns:1fr;}
   .topbar{flex-direction:column;align-items:flex-start;}
+  .linkedin-badge-wrapper{flex-direction:column;gap:24px;}
 }
 </style>
 </head>
@@ -303,106 +209,44 @@ body::before{
   </div>
   <div class="topbar-right">
     <div class="open-badge"><div class="pulse"></div>Open to Work</div>
-    <a class="dl-btn" href="https://drive.google.com/uc?export=download&id=1ZyJYHqvEwnhvzpy1g2sj6MCytQoWogzX" target="_blank">
-      ⬇ Download Resume
-    </a>
+    <a class="dl-btn" href="https://drive.google.com/uc?export=download&id=1ZyJYHqvEwnhvzpy1g2sj6MCytQoWogzX" target="_blank">⬇ Download Resume</a>
   </div>
 </div>
 
 <!-- HERO -->
 <div class="hero animate">
   <div>
-    <div class="hero-eyebrow">
-      <div class="eyebrow-line"></div>
-      <div class="eyebrow-text">Desktop Support Engineer</div>
-    </div>
+    <div class="hero-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Desktop Support Engineer</div></div>
     <div class="hero-name">Venugopal<br>Inti</div>
-    <div class="hero-role">
-      IT Infrastructure & End-User Solutions Specialist with <strong style="color:var(--gold2)">6+ years</strong> of hands-on experience in MDM, SCCM, ServiceNow, Citrix VDI, and enterprise endpoint management across large-scale banking and healthcare environments.
-    </div>
+    <div class="hero-role">IT Infrastructure & End-User Solutions Specialist with <strong style="color:var(--gold2)">6+ years</strong> of hands-on experience in MDM, SCCM, ServiceNow, Citrix VDI, and enterprise endpoint management across large-scale banking and healthcare environments.</div>
     <div class="hero-tags">
-      <span class="tag">MDM Expert</span>
-      <span class="tag">Microsoft Intune</span>
-      <span class="tag">JAMF Pro</span>
-      <span class="tag alt">Kotak Mahindra Bank</span>
-      <span class="tag alt">ServiceNow</span>
-      <span class="tag alt">Hyderabad · Remote · Hybrid</span>
+      <span class="tag">MDM Expert</span><span class="tag">Microsoft Intune</span><span class="tag">JAMF Pro</span>
+      <span class="tag alt">Kotak Mahindra Bank</span><span class="tag alt">ServiceNow</span><span class="tag alt">Hyderabad · Remote · Hybrid</span>
     </div>
     <div class="hero-btns">
       <a class="hero-cta" href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank">View LinkedIn →</a>
       <a class="hero-cta2" href="https://drive.google.com/uc?export=download&id=1ZyJYHqvEwnhvzpy1g2sj6MCytQoWogzX" target="_blank">⬇ Resume</a>
     </div>
   </div>
-  <!-- PROFILE CARD -->
   <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:14px;">
-
-    <!-- Photo with glow ring -->
     <div style="position:relative;width:160px;height:160px;">
-      <!-- Outer glow ring -->
-      <div style="
-        position:absolute;inset:-8px;border-radius:50%;
-        background:conic-gradient(var(--gold),transparent,var(--gold2),transparent,var(--gold));
-        animation:spin 6s linear infinite;opacity:0.35;
-      "></div>
+      <div style="position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(var(--gold),transparent,var(--gold2),transparent,var(--gold));animation:spin 6s linear infinite;opacity:0.35;"></div>
       <div style="position:absolute;inset:-3px;border-radius:50%;border:1px solid rgba(201,168,76,0.2);"></div>
-      <!-- Photo circle -->
-      <div style="
-        position:absolute;inset:0;border-radius:50%;overflow:hidden;
-        border:2px solid rgba(201,168,76,0.4);
-        box-shadow:0 0 32px rgba(201,168,76,0.2);
-      ">
-        <img src="photo.jpg" alt="Venugopal Inti"
-          style="width:100%;height:100%;object-fit:cover;object-position:top;"
-          onerror="this.style.display='none';document.getElementById('vi-fallback').style.display='flex';"
-        >
-        <!-- Fallback if photo not loaded -->
-        <div id="vi-fallback" style="
-          display:none;width:100%;height:100%;
-          background:linear-gradient(135deg,#0f1628,#1a2240);
-          align-items:center;justify-content:center;
-        ">
-          <span style="
-            font-family:'Playfair Display',serif;font-size:56px;font-weight:800;
-            background:linear-gradient(135deg,var(--gold2),var(--gold));
-            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-          ">VI</span>
-        </div>
+      <div style="position:absolute;inset:0;border-radius:50%;overflow:hidden;border:2px solid rgba(201,168,76,0.4);box-shadow:0 0 32px rgba(201,168,76,0.2);">
+        <img src="photo.jpg" alt="Venugopal Inti" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none';document.getElementById('vi-fallback').style.display='flex';">
+        <div id="vi-fallback" style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#0f1628,#1a2240);align-items:center;justify-content:center;"><span style="font-family:'Playfair Display',serif;font-size:56px;font-weight:800;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">VI</span></div>
       </div>
-      <!-- Orbit dot -->
-      <div style="position:absolute;top:50%;left:50%;width:100%;height:100%;animation:orbit 4s linear infinite;transform-origin:0 0;">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 8px var(--gold);position:absolute;top:-84px;left:-4px;"></div>
-      </div>
+      <div style="position:absolute;top:50%;left:50%;width:100%;height:100%;animation:orbit 4s linear infinite;transform-origin:0 0;"><div style="width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 8px var(--gold);position:absolute;top:-84px;left:-4px;"></div></div>
     </div>
-
-    <!-- Name label -->
-    <div style="text-align:center;">
-      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold2);letter-spacing:1px;">Venugopal Inti</div>
-      <div style="font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:3px;">Desktop Engineer</div>
-    </div>
-
-    <!-- Mini stat pills -->
+    <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold2);letter-spacing:1px;">Venugopal Inti</div><div style="font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:3px;">Desktop Engineer</div></div>
     <div style="display:flex;flex-direction:column;gap:7px;width:160px;">
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:7px 12px;">
-        <span style="font-size:13px;">⏱️</span>
-        <span style="font-size:11px;color:var(--soft);">6+ Yrs Experience</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:8px;padding:7px 12px;">
-        <span style="font-size:13px;">📍</span>
-        <span style="font-size:11px;color:var(--soft);">Hyderabad, India</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(74,144,217,0.06);border:1px solid rgba(74,144,217,0.15);border-radius:8px;padding:7px 12px;">
-        <span style="font-size:13px;">💼</span>
-        <span style="font-size:11px;color:var(--soft);">Open to Work</span>
-      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:7px 12px;"><span style="font-size:13px;">⏱️</span><span style="font-size:11px;color:var(--soft);">6+ Yrs Experience</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:8px;padding:7px 12px;"><span style="font-size:13px;">📍</span><span style="font-size:11px;color:var(--soft);">Hyderabad, India</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(74,144,217,0.06);border:1px solid rgba(74,144,217,0.15);border-radius:8px;padding:7px 12px;"><span style="font-size:13px;">💼</span><span style="font-size:11px;color:var(--soft);">Open to Work</span></div>
     </div>
-
   </div>
 </div>
-
-<style>
-@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-@keyframes orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-</style>
+<style>@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}@keyframes orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}</style>
 
 <!-- STATS -->
 <div class="stats-row animate">
@@ -416,37 +260,16 @@ body::before{
 <div class="sec-head animate"><div class="sec-title">Appreciation & Recognition</div><div class="sec-line"></div></div>
 <div class="sec-sub">Testimonials from Kotak Mahindra Bank Leadership</div>
 <div class="appr-grid animate">
-
   <div class="appr-card">
     <div class="quote-mark">"</div>
-    <div class="appr-text">
-      Mr. I Venugopala is <strong>always available for resolving the issues in the branch</strong> whenever we call post raising the remedy. Generally calling IT is a herculean task, but we are lucky to have Venu in same city whenever issue arises to resolve. Since <strong>CISCO NAC Network</strong> introduced, we often face login issues multiple times where he resolves immediately.
-    </div>
-    <div class="appr-meta">
-      <div class="appr-icon">🏦</div>
-      <div>
-        <div class="appr-name">Mamatha Nizamkar</div>
-        <div class="appr-role">Consumer Bank · Kotak Mahindra Bank Ltd.</div>
-      </div>
-      <div class="appr-badge">Appraisal Mail</div>
-    </div>
+    <div class="appr-text">Mr. I Venugopala is <strong>always available for resolving the issues in the branch</strong> whenever we call post raising the remedy. Generally calling IT is a herculean task, but we are lucky to have Venu in same city whenever issue arises to resolve. Since <strong>CISCO NAC Network</strong> introduced, we often face login issues multiple times where he resolves immediately.</div>
+    <div class="appr-meta"><div class="appr-icon">🏦</div><div><div class="appr-name">Mamatha Nizamkar</div><div class="appr-role">Consumer Bank · Kotak Mahindra Bank Ltd.</div></div><div class="appr-badge">Appraisal Mail</div></div>
   </div>
-
   <div class="appr-card">
     <div class="quote-mark">"</div>
-    <div class="appr-text">
-      Dear Inti Venugopala, Your <strong>expertise and quick response</strong> to Cisco Network issues and Applications like <strong>Finacle, Kraman, 2FA</strong> etc. were invaluable — helping prevent significant disruption to our operations. Your professional demeanor and patience did not go unnoticed. Your <strong>dedication to ensuring the smooth functioning of our IT infrastructure is a critical component of our team's success.</strong>
-    </div>
-    <div class="appr-meta">
-      <div class="appr-icon">⭐</div>
-      <div>
-        <div class="appr-name">Sharat Chandra Gajula</div>
-        <div class="appr-role">Branch Operations Manager, Punjagutta · KMBL</div>
-      </div>
-      <div class="appr-badge">Appreciation Mail</div>
-    </div>
+    <div class="appr-text">Dear Inti Venugopala, Your <strong>expertise and quick response</strong> to Cisco Network issues and Applications like <strong>Finacle, Kraman, 2FA</strong> etc. were invaluable — helping prevent significant disruption to our operations. Your <strong>dedication to ensuring the smooth functioning of our IT infrastructure is a critical component of our team's success.</strong></div>
+    <div class="appr-meta"><div class="appr-icon">⭐</div><div><div class="appr-name">Sharat Chandra Gajula</div><div class="appr-role">Branch Operations Manager, Punjagutta · KMBL</div></div><div class="appr-badge">Appreciation Mail</div></div>
   </div>
-
   <div class="appr-card" style="grid-column:1/-1;background:linear-gradient(135deg,#0c1a14,#0a1020);">
     <div style="display:flex;gap:16px;align-items:flex-start;">
       <div style="font-size:36px;opacity:0.5;font-family:'Playfair Display',serif;line-height:.8;color:var(--gold);">"</div>
@@ -454,56 +277,30 @@ body::before{
         <div class="appr-text" style="font-size:14px;color:#c8d4e0;"><strong style="color:var(--gold2);">@Venu appreciated, keep doing well.</strong></div>
         <div class="appr-meta" style="border-top:1px solid var(--border2);padding-top:12px;">
           <div class="appr-icon">👤</div>
-          <div>
-            <div class="appr-name">Madhankumar Rajendran</div>
-            <div class="appr-role">Information Technology Manager · Kotak Mahindra Bank Ltd. · Somajiguda, Hyderabad</div>
-          </div>
+          <div><div class="appr-name">Madhankumar Rajendran</div><div class="appr-role">Information Technology Manager · Kotak Mahindra Bank Ltd. · Somajiguda, Hyderabad</div></div>
           <div class="appr-badge" style="background:rgba(74,144,217,0.1);border-color:rgba(74,144,217,0.2);color:#93c5fd;">IT Manager</div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- EMAIL 3: Appreciate the job -->
   <div class="appr-card">
     <div class="quote-mark">"</div>
-    <div class="appr-text">
-      I really appreciate <strong>Mr. Venu Gopal for fixing the issues in my Laptop</strong> — he was <strong>very quick, polite and helpful.</strong>
-    </div>
-    <div class="appr-meta">
-      <div class="appr-icon">💼</div>
-      <div>
-        <div class="appr-name">Kaushik De</div>
-        <div class="appr-role">Consumer Bank · Kotak Mahindra Bank Ltd.</div>
-      </div>
-      <div class="appr-badge">17 Jul 2023</div>
-    </div>
+    <div class="appr-text">I really appreciate <strong>Mr. Venu Gopal for fixing the issues in my Laptop</strong> — he was <strong>very quick, polite and helpful.</strong></div>
+    <div class="appr-meta"><div class="appr-icon">💼</div><div><div class="appr-name">Kaushik De</div><div class="appr-role">Consumer Bank · Kotak Mahindra Bank Ltd.</div></div><div class="appr-badge">17 Jul 2023</div></div>
     <div style="margin-top:14px;padding:12px 14px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:10px;">
       <div style="font-size:11px;color:var(--gold);font-weight:700;margin-bottom:4px;">↩ Reply — Ramakrishna P.T.V · Information Technology, KMBL</div>
       <div style="font-size:12px;color:var(--soft);font-style:italic;">"Thanks for the feedback. <strong style="color:var(--gold2);">Good job Venu.</strong>"</div>
     </div>
   </div>
-
-  <!-- EMAIL 4: Laptop Hanged -->
   <div class="appr-card">
     <div class="quote-mark">"</div>
-    <div class="appr-text">
-      Dear Venugopal, <strong>Thanks for your immediate support</strong> in resolving the high-priority laptop issue promptly and efficiently.
-    </div>
-    <div class="appr-meta">
-      <div class="appr-icon">⚡</div>
-      <div>
-        <div class="appr-name">Thirumala Akula</div>
-        <div class="appr-role">Strategy Team – HO · South SPOC · Kotak Mahindra Bank, Hyderabad</div>
-      </div>
-      <div class="appr-badge">19 Jul 2023</div>
-    </div>
+    <div class="appr-text">Dear Venugopal, <strong>Thanks for your immediate support</strong> in resolving the high-priority laptop issue promptly and efficiently.</div>
+    <div class="appr-meta"><div class="appr-icon">⚡</div><div><div class="appr-name">Thirumala Akula</div><div class="appr-role">Strategy Team – HO · South SPOC · Kotak Mahindra Bank, Hyderabad</div></div><div class="appr-badge">19 Jul 2023</div></div>
     <div style="margin-top:14px;padding:12px 14px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:10px;">
       <div style="font-size:11px;color:var(--gold);font-weight:700;margin-bottom:4px;">↩ Reply — Ramakrishna P.T.V · Information Technology, KMBL</div>
       <div style="font-size:12px;color:var(--soft);font-style:italic;">"<strong style="color:var(--gold2);">Good job Venu & team.</strong>"</div>
     </div>
   </div>
-
 </div>
 
 <!-- CERTIFICATION -->
@@ -515,36 +312,24 @@ body::before{
     <div class="cert-issued">Kotak myLearn · Certificate of Completion</div>
     <div class="cert-title">Awareness Course on Phishing</div>
     <div class="cert-detail">Issued by <strong>Kotak Mahindra Bank Ltd.</strong> — myLearn Platform &nbsp;·&nbsp; Completed on <strong>18 Jan, 2024</strong></div>
-    <div class="cert-tags">
-      <span class="cert-tag">✓ Cybersecurity</span>
-      <span class="cert-tag">✓ Phishing Awareness</span>
-      <span class="cert-tag">✓ Security Best Practices</span>
-      <span class="cert-tag">✓ Enterprise Training</span>
-    </div>
+    <div class="cert-tags"><span class="cert-tag">✓ Cybersecurity</span><span class="cert-tag">✓ Phishing Awareness</span><span class="cert-tag">✓ Security Best Practices</span><span class="cert-tag">✓ Enterprise Training</span></div>
   </div>
 </div>
 
 <!-- SKILLS -->
 <div class="sec-head animate"><div class="sec-title">Core Technical Skills</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:16px;">Proficiency Levels</div>
-<div class="skills-block animate">
-  <div class="skill-grid" id="skill-grid"></div>
-</div>
+<div class="skills-block animate"><div class="skill-grid" id="skill-grid"></div></div>
 
 <!-- TOOLS -->
 <div class="tools-block animate">
   <div class="sec-sub" style="margin-bottom:16px;">Tools & Platforms</div>
   <div class="tools-wrap">
-    <span class="tool t1">Microsoft Intune</span><span class="tool t2">JAMF Pro</span>
-    <span class="tool t3">Hexnode UEM</span><span class="tool t4">Kandji</span>
-    <span class="tool t2">JumpCloud</span><span class="tool t4">SCCM</span>
-    <span class="tool t5">ServiceNow</span><span class="tool t1">BMC Remedy</span>
-    <span class="tool t1">Citrix VDI</span><span class="tool t2">Active Directory</span>
-    <span class="tool t1">Azure AD</span><span class="tool t5">Windows 10/11</span>
-    <span class="tool t2">macOS</span><span class="tool t3">PowerShell</span>
-    <span class="tool t4">MS Office 365</span><span class="tool t1">Cisco NAC</span>
-    <span class="tool t5">G Suite</span><span class="tool t3">Atlassian (Jira)</span>
-    <span class="tool t2">Microsoft Teams</span><span class="tool t4">Trend Micro AV</span>
+    <span class="tool t1">Microsoft Intune</span><span class="tool t2">JAMF Pro</span><span class="tool t3">Hexnode UEM</span><span class="tool t4">Kandji</span>
+    <span class="tool t2">JumpCloud</span><span class="tool t4">SCCM</span><span class="tool t5">ServiceNow</span><span class="tool t1">BMC Remedy</span>
+    <span class="tool t1">Citrix VDI</span><span class="tool t2">Active Directory</span><span class="tool t1">Azure AD</span><span class="tool t5">Windows 10/11</span>
+    <span class="tool t2">macOS</span><span class="tool t3">PowerShell</span><span class="tool t4">MS Office 365</span><span class="tool t1">Cisco NAC</span>
+    <span class="tool t5">G Suite</span><span class="tool t3">Atlassian (Jira)</span><span class="tool t2">Microsoft Teams</span><span class="tool t4">Trend Micro AV</span>
   </div>
 </div>
 
@@ -556,141 +341,43 @@ body::before{
     <button class="tbtn active" onclick="ft('all',this)">All (14)</button>
     <button class="tbtn" onclick="ft('resolved',this)">Resolved</button>
   </div>
-  <div class="dash-header">
-    <div class="dash-htitle">🎫 Incident Records</div>
-    <div class="dash-hbadge">100% Resolved</div>
-  </div>
+  <div class="dash-header"><div class="dash-htitle">🎫 Incident Records</div><div class="dash-hbadge">100% Resolved</div></div>
   <table class="ticket-table">
     <thead><tr><th>Ticket ID</th><th>Issue Description</th><th>Priority</th><th>Status</th></tr></thead>
     <tbody id="tbody"></tbody>
   </table>
 </div>
 
-<!-- EXPERIENCE TIMELINE -->
+<!-- EXPERIENCE -->
 <div class="sec-head animate"><div class="sec-title">Professional Experience</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:24px;">6+ Years · 5 Organizations</div>
-
 <div class="exp-timeline animate">
-
-  <!-- 1 -->
   <div class="exp-item">
-    <div class="exp-header">
-      <div class="exp-ico">🏦</div>
-      <div>
-        <div class="exp-role">Desktop Support Engineer</div>
-        <div class="exp-co">Kotak Mahindra Bank Ltd.</div>
-        <div class="exp-meta">
-          <span class="exp-pill">📅 Dec 2022 – Feb 2025</span>
-          <span class="exp-pill">📍 Hyderabad, Telangana</span>
-          <span class="exp-pill">Payroll: Reno Vision Automation Services</span>
-        </div>
-      </div>
-    </div>
-    <div class="exp-desc">
-      <div class="exp-pt">Handled all incidents via ServiceNow & BMC Remedy as per SLA commitments</div>
-      <div class="exp-pt">Managed MDM solutions — Intune, JAMF, Hexnode, Kandji, JumpCloud</div>
-      <div class="exp-pt">SCCM-based patch management for system security & compliance</div>
-      <div class="exp-pt">Monitored & maintained Citrix VDI infrastructure</div>
-      <div class="exp-pt">Troubleshot Cisco NAC issues & network connectivity problems</div>
-      <div class="exp-pt">Conducted device inventory audits & managed vendor relationships</div>
-    </div>
+    <div class="exp-header"><div class="exp-ico">🏦</div><div><div class="exp-role">Desktop Support Engineer</div><div class="exp-co">Kotak Mahindra Bank Ltd.</div><div class="exp-meta"><span class="exp-pill">📅 Dec 2022 – Feb 2025</span><span class="exp-pill">📍 Hyderabad, Telangana</span><span class="exp-pill">Payroll: Reno Vision Automation Services</span></div></div></div>
+    <div class="exp-desc"><div class="exp-pt">Handled all incidents via ServiceNow & BMC Remedy as per SLA commitments</div><div class="exp-pt">Managed MDM solutions — Intune, JAMF, Hexnode, Kandji, JumpCloud</div><div class="exp-pt">SCCM-based patch management for system security & compliance</div><div class="exp-pt">Monitored & maintained Citrix VDI infrastructure</div><div class="exp-pt">Troubleshot Cisco NAC issues & network connectivity problems</div><div class="exp-pt">Conducted device inventory audits & managed vendor relationships</div></div>
   </div>
-
-  <!-- 2 -->
   <div class="exp-item">
-    <div class="exp-header">
-      <div class="exp-ico">🏥</div>
-      <div>
-        <div class="exp-role">IT Support Technician</div>
-        <div class="exp-co">Ankura Hospitals</div>
-        <div class="exp-meta">
-          <span class="exp-pill">📅 Jul 2021 – Oct 2022</span>
-          <span class="exp-pill">📍 Madeenaguda, Hyderabad</span>
-        </div>
-      </div>
-    </div>
-    <div class="exp-desc">
-      <div class="exp-pt">Provided technical support for enterprise ICT applications & hospital IT systems</div>
-      <div class="exp-pt">Managed macOS environments — configuration, updates, user accounts</div>
-      <div class="exp-pt">Configured & managed devices using Microsoft Intune for compliance</div>
-      <div class="exp-pt">Automated OS patch updates using SCCM across multiple environments</div>
-      <div class="exp-pt">Provided dedicated IT support during night shifts for critical operations</div>
-      <div class="exp-pt">Resolved SaaS application issues & prepared integration documentation</div>
-    </div>
+    <div class="exp-header"><div class="exp-ico">🏥</div><div><div class="exp-role">IT Support Technician</div><div class="exp-co">Ankura Hospitals</div><div class="exp-meta"><span class="exp-pill">📅 Jul 2021 – Oct 2022</span><span class="exp-pill">📍 Madeenaguda, Hyderabad</span></div></div></div>
+    <div class="exp-desc"><div class="exp-pt">Provided technical support for enterprise ICT applications & hospital IT systems</div><div class="exp-pt">Managed macOS environments — configuration, updates, user accounts</div><div class="exp-pt">Configured & managed devices using Microsoft Intune for compliance</div><div class="exp-pt">Automated OS patch updates using SCCM across multiple environments</div><div class="exp-pt">Provided dedicated IT support during night shifts for critical operations</div><div class="exp-pt">Resolved SaaS application issues & prepared integration documentation</div></div>
   </div>
-
-  <!-- 3 -->
   <div class="exp-item">
-    <div class="exp-header">
-      <div class="exp-ico">🔧</div>
-      <div>
-        <div class="exp-role">Hardware & Network Support Technician</div>
-        <div class="exp-co">Sri Lalitha Enterprises Pvt. Ltd.</div>
-        <div class="exp-meta">
-          <span class="exp-pill">📅 Feb 2019 – Mar 2021</span>
-          <span class="exp-pill">📍 Peddapuram, Andhra Pradesh</span>
-        </div>
-      </div>
-    </div>
-    <div class="exp-desc">
-      <div class="exp-pt">Installed, configured & troubleshot hardware, software & network issues</div>
-      <div class="exp-pt">Provided remote & on-site support for Citrix VDI environments</div>
-      <div class="exp-pt">Led vendor meetings to finalize SLAs & service delivery standards</div>
-      <div class="exp-pt">Prepared checklists for consistent system configuration across departments</div>
-      <div class="exp-pt">Helped end-users recover lost/damaged data via backup & restore procedures</div>
-      <div class="exp-pt">Maintained transparent customer communication on product issues</div>
-    </div>
+    <div class="exp-header"><div class="exp-ico">🔧</div><div><div class="exp-role">Hardware & Network Support Technician</div><div class="exp-co">Sri Lalitha Enterprises Pvt. Ltd.</div><div class="exp-meta"><span class="exp-pill">📅 Feb 2019 – Mar 2021</span><span class="exp-pill">📍 Peddapuram, Andhra Pradesh</span></div></div></div>
+    <div class="exp-desc"><div class="exp-pt">Installed, configured & troubleshot hardware, software & network issues</div><div class="exp-pt">Provided remote & on-site support for Citrix VDI environments</div><div class="exp-pt">Led vendor meetings to finalize SLAs & service delivery standards</div><div class="exp-pt">Prepared checklists for consistent system configuration across departments</div><div class="exp-pt">Helped end-users recover lost/damaged data via backup & restore procedures</div><div class="exp-pt">Maintained transparent customer communication on product issues</div></div>
   </div>
-
-  <!-- 4 -->
   <div class="exp-item">
-    <div class="exp-header">
-      <div class="exp-ico">🎬</div>
-      <div>
-        <div class="exp-role">IT Support Specialist</div>
-        <div class="exp-co">INOX Leisure Limited</div>
-        <div class="exp-meta">
-          <span class="exp-pill">📅 Apr 2018 – Feb 2019</span>
-          <span class="exp-pill">📍 Kakinada, Andhra Pradesh</span>
-        </div>
-      </div>
-    </div>
-    <div class="exp-desc">
-      <div class="exp-pt">Maintained day-to-day IT operations — OS, security, applications, servers, email</div>
-      <div class="exp-pt">Managed vendor relationships for hardware procurement & replacements</div>
-      <div class="exp-pt">Streamlined employee offboarding process for data protection</div>
-      <div class="exp-pt">Handled hardware decommissioning of outdated systems</div>
-    </div>
+    <div class="exp-header"><div class="exp-ico">🎬</div><div><div class="exp-role">IT Support Specialist</div><div class="exp-co">INOX Leisure Limited</div><div class="exp-meta"><span class="exp-pill">📅 Apr 2018 – Feb 2019</span><span class="exp-pill">📍 Kakinada, Andhra Pradesh</span></div></div></div>
+    <div class="exp-desc"><div class="exp-pt">Maintained day-to-day IT operations — OS, security, applications, servers, email</div><div class="exp-pt">Managed vendor relationships for hardware procurement & replacements</div><div class="exp-pt">Streamlined employee offboarding process for data protection</div><div class="exp-pt">Handled hardware decommissioning of outdated systems</div></div>
   </div>
-
-  <!-- 5 -->
   <div class="exp-item">
-    <div class="exp-header">
-      <div class="exp-ico">💾</div>
-      <div>
-        <div class="exp-role">Desktop Support & Data Recovery Specialist</div>
-        <div class="exp-co">Datapro</div>
-        <div class="exp-meta">
-          <span class="exp-pill">📅 Feb 2017 – Mar 2018</span>
-          <span class="exp-pill">📍 Eluru, Andhra Pradesh</span>
-        </div>
-      </div>
-    </div>
-    <div class="exp-desc">
-      <div class="exp-pt">Identified & recovered hidden/damaged data using low-level forensic analysis</div>
-      <div class="exp-pt">Developed data recovery plans for disaster recovery situations</div>
-      <div class="exp-pt">Retrieved critical data from faulty hardware devices</div>
-      <div class="exp-pt">Carried out routine hardware maintenance & resolved mechanical issues</div>
-    </div>
+    <div class="exp-header"><div class="exp-ico">💾</div><div><div class="exp-role">Desktop Support & Data Recovery Specialist</div><div class="exp-co">Datapro</div><div class="exp-meta"><span class="exp-pill">📅 Feb 2017 – Mar 2018</span><span class="exp-pill">📍 Eluru, Andhra Pradesh</span></div></div></div>
+    <div class="exp-desc"><div class="exp-pt">Identified & recovered hidden/damaged data using low-level forensic analysis</div><div class="exp-pt">Developed data recovery plans for disaster recovery situations</div><div class="exp-pt">Retrieved critical data from faulty hardware devices</div><div class="exp-pt">Carried out routine hardware maintenance & resolved mechanical issues</div></div>
   </div>
-
 </div>
 
 <!-- EDUCATION -->
 <div class="sec-head animate"><div class="sec-title">Education</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:24px;">Academic Qualifications</div>
-
-<div class="animate" style="max-width:480px;">
+<div class="animate" style="max-width:480px;margin-bottom:60px;">
   <div class="edu-card">
     <div class="edu-icon">🎓</div>
     <div class="edu-deg">B.Com (Bachelor of Commerce in Computer Applications)</div>
@@ -700,8 +387,34 @@ body::before{
   </div>
 </div>
 
+<!-- ===== NEW: LINKEDIN CONNECT SECTION ===== -->
+<div class="sec-head animate"><div class="sec-title">Connect on LinkedIn</div><div class="sec-line"></div></div>
+<div class="sec-sub" style="margin-bottom:24px;">Open to New Opportunities · Immediate Joiner</div>
+
+<div class="linkedin-badge-wrapper animate linkedin-section">
+  <!-- Left text + button -->
+  <div class="linkedin-badge-text">
+    <h3>Let's Connect &amp; Grow Together</h3>
+    <p>
+      Looking for Desktop Support Engineer, IT Infrastructure, or MDM Specialist roles across India.<br>
+      On-site · Hybrid · Remote — available as an <strong style="color:var(--gold2);">immediate joiner.</strong>
+    </p>
+    <a class="linkedin-connect-btn" href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+      Connect on LinkedIn
+    </a>
+  </div>
+
+  <!-- Right: Official LinkedIn Badge (Step 2 embed code) -->
+  <div class="linkedin-badge-embed">
+    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="venugopal-inti-7567631ab" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/venugopal-inti-7567631ab?trk=profile-badge">Venugopal Inti</a></div>
+  </div>
+</div>
+
 <!-- FOOTER -->
-<div class="footer animate">
+<div class="footer animate" style="margin-top:60px;">
   <p style="margin-bottom:8px;">
     <a href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank">LinkedIn</a>
     &nbsp;·&nbsp;
@@ -714,14 +427,12 @@ body::before{
 </div>
 
 <script>
-// COUNTERS
 function count(id,to,sfx){
   let v=0,el=document.getElementById(id),step=to/60;
   const iv=setInterval(()=>{v=Math.min(v+step,to);el.textContent=Math.floor(v)+(sfx||'');if(v>=to)clearInterval(iv);},20);
 }
 setTimeout(()=>{count('c1',6,'+');count('c2',248,'+');count('c3',147,'+');count('c4',5);},400);
 
-// SKILLS
 const skills=[
   {n:'Microsoft Intune',v:95},{n:'JAMF Pro',v:90},
   {n:'SCCM / Endpoint Mgmt',v:88},{n:'ServiceNow (ITSM)',v:92},
@@ -735,7 +446,6 @@ document.getElementById('skill-grid').innerHTML=skills.map(s=>`
   </div>`).join('');
 setTimeout(()=>document.querySelectorAll('.skill-fill').forEach(e=>e.style.width=e.dataset.w),600);
 
-// TICKETS
 const tickets=[
   {id:'INC2154442',issue:'SCCM deployment failed — Office 365 packages',priority:'medium',status:'resolved'},
   {id:'INC2168027',issue:'Email delivery delay — Exchange Online sync',priority:'medium',status:'resolved'},
