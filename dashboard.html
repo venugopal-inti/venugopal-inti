@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Venugopal Inti — IT Infrastructure Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<!-- LinkedIn Badge Script (Step 1) -->
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 <style>
 :root {
   --bg:#05080f;--s1:#080d1a;--s2:#0c1220;--card:#0f1628;
@@ -181,6 +179,47 @@ body::before{
 .linkedin-connect-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(10,102,194,0.5);}
 .linkedin-badge-embed{ flex-shrink:0;position:relative;z-index:1; }
 
+/* Custom LinkedIn Badge */
+.custom-li-badge{
+  display:flex;flex-direction:column;align-items:center;
+  width:200px;background:#1a1f2e;
+  border:1px solid rgba(10,102,194,0.4);
+  border-radius:14px;overflow:hidden;
+  text-decoration:none;
+  box-shadow:0 4px 24px rgba(10,102,194,0.15);
+  transition:transform .2s,box-shadow .2s;
+}
+.custom-li-badge:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(10,102,194,0.3);}
+.cli-header{
+  width:100%;background:#0a66c2;
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;color:#fff;
+}
+.cli-photo-wrap{
+  position:relative;margin:20px auto 12px;
+  width:72px;height:72px;border-radius:50%;
+  border:3px solid #0a66c2;overflow:hidden;
+  background:#0f1628;
+}
+.cli-photo{width:100%;height:100%;object-fit:cover;object-position:top;}
+.cli-photo-fallback{
+  display:none;width:100%;height:100%;
+  background:linear-gradient(135deg,#0f1628,#1a2240);
+  align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:24px;
+  font-weight:800;color:var(--gold2);
+}
+.cli-name{font-size:14px;font-weight:700;color:#fff;text-align:center;padding:0 14px;}
+.cli-headline{font-size:11px;color:#94a3b8;text-align:center;padding:4px 14px 2px;line-height:1.5;}
+.cli-company{font-size:10px;color:#4a5568;text-align:center;padding:0 14px 16px;}
+.cli-btn{
+  margin:0 14px 16px;width:calc(100% - 28px);
+  background:#0a66c2;color:#fff;
+  font-size:12px;font-weight:700;
+  padding:8px 0;border-radius:20px;text-align:center;
+  letter-spacing:0.3px;
+}
+
 .footer{text-align:center;padding-top:40px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);letter-spacing:0.5px;}
 .footer a{color:var(--gold);text-decoration:none;}
 .footer a:hover{color:var(--gold2);}
@@ -199,10 +238,66 @@ body::before{
 </style>
 </head>
 <body>
+
+<!-- ===== CINEMATIC INTRO SCREEN ===== -->
+<div id="intro-screen">
+  <div id="intro-inner">
+    <div id="intro-text"></div>
+    <div id="intro-skip" onclick="skipIntro()">[ skip intro ]</div>
+  </div>
+</div>
+
+<style>
+#intro-screen{
+  position:fixed;inset:0;z-index:9999;
+  background:#02040a;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity 0.9s ease,visibility 0.9s ease;
+}
+#intro-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+#intro-inner{max-width:680px;width:100%;padding:32px 24px;}
+#intro-text{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(13px,2.2vw,19px);
+  line-height:2.1;color:#e8c97a;
+  min-height:300px;white-space:pre-wrap;word-break:break-word;
+}
+.it-dim{color:#374151;}
+.it-white{color:#eef0f6;}
+.it-green{color:#22c55e;}
+.it-blue{color:#60a5fa;}
+.it-gold{color:#e8c97a;}
+.it-cursor{
+  display:inline-block;width:10px;height:1.1em;
+  background:#e8c97a;margin-left:2px;
+  animation:blink .7s step-end infinite;
+  vertical-align:text-bottom;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+#intro-skip{
+  margin-top:32px;font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:2px;color:#374151;
+  cursor:pointer;transition:color .2s;
+  text-transform:uppercase;display:inline-block;
+}
+#intro-skip:hover{color:#e8c97a;}
+
+/* SCROLL REVEAL */
+.reveal,.reveal-left,.reveal-scale{
+  opacity:0;transition:opacity .7s ease,transform .7s ease;
+}
+.reveal{transform:translateY(28px);}
+.reveal-left{transform:translateX(-28px);}
+.reveal-scale{transform:scale(0.95);}
+.reveal.on,.reveal-left.on,.reveal-scale.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.18s;}
+.d3{transition-delay:.28s;}.d4{transition-delay:.38s;}
+</style>
+
 <div class="wrap">
 
 <!-- TOPBAR -->
-<div class="topbar animate">
+<div class="topbar reveal">
   <div class="topbar-logo">
     <div class="logo-mark">VI</div>
     <div class="logo-label">IT Infrastructure Portfolio &nbsp;·&nbsp; Hyderabad, Telangana</div>
@@ -214,7 +309,7 @@ body::before{
 </div>
 
 <!-- HERO -->
-<div class="hero animate">
+<div class="hero reveal d1">
   <div>
     <div class="hero-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Desktop Support Engineer</div></div>
     <div class="hero-name">Venugopal<br>Inti</div>
@@ -249,7 +344,7 @@ body::before{
 <style>@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}@keyframes orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}</style>
 
 <!-- STATS -->
-<div class="stats-row animate">
+<div class="stats-row reveal d2">
   <div class="stat"><div class="stat-n" id="c1">0</div><div class="stat-l">Years Experience</div><div class="stat-c">IT Infrastructure</div></div>
   <div class="stat"><div class="stat-n" id="c2">0</div><div class="stat-l">Devices Managed</div><div class="stat-c">Intune + JAMF + Hexnode</div></div>
   <div class="stat"><div class="stat-n" id="c3">0</div><div class="stat-l">Tickets Resolved</div><div class="stat-c">100% Resolution Rate</div></div>
@@ -257,9 +352,9 @@ body::before{
 </div>
 
 <!-- APPRECIATION -->
-<div class="sec-head animate"><div class="sec-title">Appreciation & Recognition</div><div class="sec-line"></div></div>
+<div class="sec-head reveal"><div class="sec-title">Appreciation & Recognition</div><div class="sec-line"></div></div>
 <div class="sec-sub">Testimonials from Kotak Mahindra Bank Leadership</div>
-<div class="appr-grid animate">
+<div class="appr-grid reveal">
   <div class="appr-card">
     <div class="quote-mark">"</div>
     <div class="appr-text">Mr. I Venugopala is <strong>always available for resolving the issues in the branch</strong> whenever we call post raising the remedy. Generally calling IT is a herculean task, but we are lucky to have Venu in same city whenever issue arises to resolve. Since <strong>CISCO NAC Network</strong> introduced, we often face login issues multiple times where he resolves immediately.</div>
@@ -304,9 +399,9 @@ body::before{
 </div>
 
 <!-- CERTIFICATION -->
-<div class="sec-head animate"><div class="sec-title">Certifications</div><div class="sec-line"></div></div>
+<div class="sec-head reveal"><div class="sec-title">Certifications</div><div class="sec-line"></div></div>
 <div class="sec-sub">Completed Courses & Training</div>
-<div class="cert-card animate">
+<div class="cert-card reveal-scale">
   <div class="cert-seal">🎓</div>
   <div class="cert-content">
     <div class="cert-issued">Kotak myLearn · Certificate of Completion</div>
@@ -317,12 +412,12 @@ body::before{
 </div>
 
 <!-- SKILLS -->
-<div class="sec-head animate"><div class="sec-title">Core Technical Skills</div><div class="sec-line"></div></div>
+<div class="sec-head reveal"><div class="sec-title">Core Technical Skills</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:16px;">Proficiency Levels</div>
-<div class="skills-block animate"><div class="skill-grid" id="skill-grid"></div></div>
+<div class="skills-block reveal"><div class="skill-grid" id="skill-grid"></div></div>
 
 <!-- TOOLS -->
-<div class="tools-block animate">
+<div class="tools-block reveal d1">
   <div class="sec-sub" style="margin-bottom:16px;">Tools & Platforms</div>
   <div class="tools-wrap">
     <span class="tool t1">Microsoft Intune</span><span class="tool t2">JAMF Pro</span><span class="tool t3">Hexnode UEM</span><span class="tool t4">Kandji</span>
@@ -334,9 +429,9 @@ body::before{
 </div>
 
 <!-- TICKET LOG -->
-<div class="sec-head animate"><div class="sec-title">ServiceNow Ticket Log</div><div class="sec-line"></div></div>
+<div class="sec-head reveal"><div class="sec-title">ServiceNow Ticket Log</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:16px;">Final Sprint · Kotak Mahindra Bank · Feb 2025</div>
-<div class="dash-panel animate">
+<div class="dash-panel reveal">
   <div class="tab-bar">
     <button class="tbtn active" onclick="ft('all',this)">All (14)</button>
     <button class="tbtn" onclick="ft('resolved',this)">Resolved</button>
@@ -349,9 +444,9 @@ body::before{
 </div>
 
 <!-- EXPERIENCE -->
-<div class="sec-head animate"><div class="sec-title">Professional Experience</div><div class="sec-line"></div></div>
+<div class="sec-head reveal"><div class="sec-title">Professional Experience</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:24px;">6+ Years · 5 Organizations</div>
-<div class="exp-timeline animate">
+<div class="exp-timeline reveal-left">
   <div class="exp-item">
     <div class="exp-header"><div class="exp-ico">🏦</div><div><div class="exp-role">Desktop Support Engineer</div><div class="exp-co">Kotak Mahindra Bank Ltd.</div><div class="exp-meta"><span class="exp-pill">📅 Dec 2022 – Feb 2025</span><span class="exp-pill">📍 Hyderabad, Telangana</span><span class="exp-pill">Payroll: Reno Vision Automation Services</span></div></div></div>
     <div class="exp-desc"><div class="exp-pt">Handled all incidents via ServiceNow & BMC Remedy as per SLA commitments</div><div class="exp-pt">Managed MDM solutions — Intune, JAMF, Hexnode, Kandji, JumpCloud</div><div class="exp-pt">SCCM-based patch management for system security & compliance</div><div class="exp-pt">Monitored & maintained Citrix VDI infrastructure</div><div class="exp-pt">Troubleshot Cisco NAC issues & network connectivity problems</div><div class="exp-pt">Conducted device inventory audits & managed vendor relationships</div></div>
@@ -375,9 +470,9 @@ body::before{
 </div>
 
 <!-- EDUCATION -->
-<div class="sec-head animate"><div class="sec-title">Education</div><div class="sec-line"></div></div>
+<div class="sec-head reveal"><div class="sec-title">Education</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:24px;">Academic Qualifications</div>
-<div class="animate" style="max-width:480px;margin-bottom:60px;">
+<div class="reveal-scale" style="max-width:480px;margin-bottom:60px;">
   <div class="edu-card">
     <div class="edu-icon">🎓</div>
     <div class="edu-deg">B.Com (Bachelor of Commerce in Computer Applications)</div>
@@ -388,10 +483,10 @@ body::before{
 </div>
 
 <!-- ===== NEW: LINKEDIN CONNECT SECTION ===== -->
-<div class="sec-head animate"><div class="sec-title">Connect on LinkedIn</div><div class="sec-line"></div></div>
+<div class="sec-head reveal"><div class="sec-title">Connect on LinkedIn</div><div class="sec-line"></div></div>
 <div class="sec-sub" style="margin-bottom:24px;">Open to New Opportunities · Immediate Joiner</div>
 
-<div class="linkedin-badge-wrapper animate linkedin-section">
+<div class="linkedin-badge-wrapper reveal linkedin-section">
   <!-- Left text + button -->
   <div class="linkedin-badge-text">
     <h3>Let's Connect &amp; Grow Together</h3>
@@ -407,14 +502,27 @@ body::before{
     </a>
   </div>
 
-  <!-- Right: Official LinkedIn Badge (Step 2 embed code) -->
+  <!-- Right: Custom LinkedIn Badge — works on mobile + desktop -->
   <div class="linkedin-badge-embed">
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="venugopal-inti-7567631ab" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://in.linkedin.com/in/venugopal-inti-7567631ab?trk=profile-badge">Venugopal Inti</a></div>
+    <a href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank" class="custom-li-badge">
+      <div class="cli-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span style="font-size:14px;font-weight:700;letter-spacing:0.5px;">LinkedIn</span>
+      </div>
+      <div class="cli-photo-wrap">
+        <img src="photo.jpg" alt="Venugopal Inti" class="cli-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="cli-photo-fallback">VI</div>
+      </div>
+      <div class="cli-name">Venugopal Inti</div>
+      <div class="cli-headline">Desktop Support Engineer</div>
+      <div class="cli-company">Kotak Mahindra Bank · Hyderabad</div>
+      <div class="cli-btn">View Profile →</div>
+    </a>
   </div>
 </div>
 
 <!-- FOOTER -->
-<div class="footer animate" style="margin-top:60px;">
+<div class="footer reveal" style="margin-top:60px;">
   <p style="margin-bottom:8px;">
     <a href="https://www.linkedin.com/in/venugopal-inti-7567631ab" target="_blank">LinkedIn</a>
     &nbsp;·&nbsp;
@@ -475,5 +583,90 @@ function ft(f,btn){
 }
 ft('all',document.querySelector('.tbtn.active'));
 </script>
+
+<script>
+// ===== INTRO TYPING ANIMATION =====
+const lines = [
+  {text: '> initializing profile...', cls: 'it-dim', delay: 0},
+  {text: '', cls: '', delay: 400},
+  {text: 'Hello. I am', cls: 'it-dim', delay: 800},
+  {text: 'Venugopal Inti', cls: 'it-gold', delay: 1400, bold: true},
+  {text: '', cls: '', delay: 1800},
+  {text: '> Role     :  Desktop Support Engineer', cls: 'it-white', delay: 2200},
+  {text: '> Location :  Hyderabad, India', cls: 'it-white', delay: 2900},
+  {text: '> Exp      :  6+ Years in IT Infrastructure', cls: 'it-white', delay: 3600},
+  {text: '', cls: '', delay: 4200},
+  {text: '> Skills   :  MDM | SCCM | ServiceNow | Citrix VDI', cls: 'it-blue', delay: 4600},
+  {text: '> Tools    :  Intune | JAMF | Azure AD | PowerShell', cls: 'it-blue', delay: 5400},
+  {text: '', cls: '', delay: 6000},
+  {text: '> Status   :  OPEN TO WORK  ✓', cls: 'it-green', delay: 6400},
+  {text: '', cls: '', delay: 7000},
+  {text: '> Loading portfolio...', cls: 'it-dim', delay: 7400},
+];
+
+const introEl = document.getElementById('intro-text');
+let lineIndex = 0;
+let charIndex = 0;
+let currentSpan = null;
+let introTimeout;
+let introDone = false;
+
+function typeNextLine() {
+  if (lineIndex >= lines.length) {
+    // All lines done — add cursor, then auto-dismiss
+    introEl.innerHTML += '<span class="it-cursor"></span>';
+    introTimeout = setTimeout(dismissIntro, 1200);
+    return;
+  }
+  const line = lines[lineIndex];
+  introTimeout = setTimeout(() => {
+    currentSpan = document.createElement('span');
+    if (line.cls) currentSpan.className = line.cls;
+    if (line.bold) currentSpan.style.fontWeight = '700';
+    introEl.appendChild(currentSpan);
+    introEl.appendChild(document.createTextNode('\n'));
+    charIndex = 0;
+    lineIndex++;
+    typeChars(line.text, currentSpan);
+  }, lineIndex === 0 ? 300 : (line.delay - (lines[lineIndex-1]?.delay || 0)));
+}
+
+function typeChars(text, span) {
+  if (charIndex < text.length) {
+    span.textContent += text[charIndex++];
+    setTimeout(() => typeChars(text, span), 28);
+  } else {
+    typeNextLine();
+  }
+}
+
+function dismissIntro() {
+  if (introDone) return;
+  introDone = true;
+  document.getElementById('intro-screen').classList.add('hidden');
+  setTimeout(() => {
+    document.getElementById('intro-screen').style.display = 'none';
+    triggerReveal();
+  }, 900);
+}
+
+function skipIntro() {
+  clearTimeout(introTimeout);
+  dismissIntro();
+}
+
+// start
+typeNextLine();
+
+// ===== SCROLL REVEAL OBSERVER =====
+function triggerReveal() {
+  const els = document.querySelectorAll('.reveal,.reveal-left,.reveal-scale');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }});
+  }, {threshold: 0.12});
+  els.forEach(el => obs.observe(el));
+}
+</script>
+
 </body>
 </html>
