@@ -585,85 +585,152 @@ ft('all',document.querySelector('.tbtn.active'));
 </script>
 
 <script>
-// ===== INTRO TYPING ANIMATION =====
+// ===== VOICE + TYPING SYNC =====
+
 const lines = [
-  {text: '> initializing profile...', cls: 'it-dim', delay: 0},
-  {text: '', cls: '', delay: 400},
-  {text: 'Hello. I am', cls: 'it-dim', delay: 800},
-  {text: 'Venugopal Inti', cls: 'it-gold', delay: 1400, bold: true},
-  {text: '', cls: '', delay: 1800},
-  {text: '> Role     :  Desktop Support Engineer', cls: 'it-white', delay: 2200},
-  {text: '> Location :  Hyderabad, India', cls: 'it-white', delay: 2900},
-  {text: '> Exp      :  6+ Years in IT Infrastructure', cls: 'it-white', delay: 3600},
-  {text: '', cls: '', delay: 4200},
-  {text: '> Skills   :  MDM | SCCM | ServiceNow | Citrix VDI', cls: 'it-blue', delay: 4600},
-  {text: '> Tools    :  Intune | JAMF | Azure AD | PowerShell', cls: 'it-blue', delay: 5400},
-  {text: '', cls: '', delay: 6000},
-  {text: '> Status   :  OPEN TO WORK  ✓', cls: 'it-green', delay: 6400},
-  {text: '', cls: '', delay: 7000},
-  {text: '> Loading portfolio...', cls: 'it-dim', delay: 7400},
+  { text: 'Initializing profile...',          cls: 'it-dim',   speak: true  },
+  { text: '',                                  cls: '',         speak: false },
+  { text: 'Hello.',                            cls: 'it-white', speak: true  },
+  { text: 'I am Venugopal Inti.',              cls: 'it-gold',  speak: true, bold: true },
+  { text: '',                                  cls: '',         speak: false },
+  { text: '> Role     :  Desktop Support Engineer',   cls: 'it-white', speak: true  },
+  { text: '> Location :  Hyderabad, India',           cls: 'it-white', speak: true  },
+  { text: '> Exp      :  6+ Years in IT Infrastructure', cls: 'it-white', speak: true  },
+  { text: '',                                  cls: '',         speak: false },
+  { text: '> Skills   :  MDM, SCCM, ServiceNow, Citrix VDI', cls: 'it-blue', speak: true },
+  { text: '> Tools    :  Intune, JAMF, Azure AD, PowerShell',  cls: 'it-blue', speak: true },
+  { text: '',                                  cls: '',         speak: false },
+  { text: '> Status   :  OPEN TO WORK  ✓',   cls: 'it-green', speak: true  },
+  { text: '',                                  cls: '',         speak: false },
+  { text: '> Loading portfolio...',            cls: 'it-dim',   speak: true  },
 ];
 
-const introEl = document.getElementById('intro-text');
-let lineIndex = 0;
-let charIndex = 0;
-let currentSpan = null;
-let introTimeout;
-let introDone = false;
+const introEl   = document.getElementById('intro-text');
+let introDone   = false;
+let allTimeouts = [];
 
-function typeNextLine() {
-  if (lineIndex >= lines.length) {
-    // All lines done — add cursor, then auto-dismiss
-    introEl.innerHTML += '<span class="it-cursor"></span>';
-    introTimeout = setTimeout(dismissIntro, 1200);
-    return;
-  }
-  const line = lines[lineIndex];
-  introTimeout = setTimeout(() => {
-    currentSpan = document.createElement('span');
-    if (line.cls) currentSpan.className = line.cls;
-    if (line.bold) currentSpan.style.fontWeight = '700';
-    introEl.appendChild(currentSpan);
-    introEl.appendChild(document.createTextNode('\n'));
-    charIndex = 0;
-    lineIndex++;
-    typeChars(line.text, currentSpan);
-  }, lineIndex === 0 ? 300 : (line.delay - (lines[lineIndex-1]?.delay || 0)));
+function safe(fn, ms) {
+  const t = setTimeout(fn, ms);
+  allTimeouts.push(t);
+  return t;
 }
 
-function typeChars(text, span) {
-  if (charIndex < text.length) {
-    span.textContent += text[charIndex++];
-    setTimeout(() => typeChars(text, span), 28);
-  } else {
-    typeNextLine();
-  }
+function clearAll() {
+  allTimeouts.forEach(clearTimeout);
+}
+
+// ---- VOICE ----
+function buildSpeechText() {
+  return lines.filter(l => l.speak && l.text).map(l => l.text).join('. ');
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang  = 'en-IN';   // Indian English accent
+  utt.rate  = 0.92;
+  utt.pitch = 1.0;
+  utt.volume = 1;
+
+  // Pick best available voice
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = voices.find(v =>
+    v.lang === 'en-IN' ||
+    v.name.includes('Google') ||
+    v.lang.startsWith('en')
+  );
+  if (preferred) utt.voice = preferred;
+  window.speechSynthesis.speak(utt);
+}
+
+// ---- TYPING ----
+function typeAll() {
+  introEl.innerHTML = '';
+  let cursor = document.createElement('span');
+  cursor.className = 'it-cursor';
+
+  let cumDelay = 300;
+
+  lines.forEach((line, i) => {
+    safe(() => {
+      // empty line = blank row
+      if (!line.text) {
+        introEl.appendChild(document.createTextNode('
+'));
+        return;
+      }
+      const span = document.createElement('span');
+      if (line.cls)  span.className = line.cls;
+      if (line.bold) span.style.fontWeight = '700';
+      introEl.appendChild(span);
+      introEl.appendChild(document.createTextNode('
+'));
+
+      // type chars one by one
+      for (let ci = 0; ci < line.text.length; ci++) {
+        const ch = line.text[ci];
+        safe(() => { span.textContent += ch; }, cumDelay + ci * 26);
+      }
+    }, cumDelay);
+
+    // advance cumDelay: time to type this line + pause between lines
+    const typeTime = line.text ? line.text.length * 26 : 0;
+    const pause    = line.text ? (i < 3 ? 420 : 280) : 160;
+    cumDelay += typeTime + pause;
+  });
+
+  // cursor blink at end, then dismiss
+  const totalTime = cumDelay + 200;
+  safe(() => introEl.appendChild(cursor), totalTime);
+  safe(() => dismissIntro(), totalTime + 1100);
 }
 
 function dismissIntro() {
   if (introDone) return;
   introDone = true;
   document.getElementById('intro-screen').classList.add('hidden');
-  setTimeout(() => {
+  safe(() => {
     document.getElementById('intro-screen').style.display = 'none';
     triggerReveal();
   }, 900);
 }
 
 function skipIntro() {
-  clearTimeout(introTimeout);
+  clearAll();
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
   dismissIntro();
 }
 
-// start
-typeNextLine();
+// ---- BOOT ----
+// Voices load async in some browsers
+function startIntro() {
+  const speechText = buildSpeechText();
+  speak(speechText);
+  typeAll();
+}
+
+if (window.speechSynthesis) {
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    startIntro();
+  } else {
+    window.speechSynthesis.onvoiceschanged = startIntro;
+    // fallback if event never fires
+    safe(startIntro, 500);
+  }
+} else {
+  startIntro(); // no speech — just type
+}
 
 // ===== SCROLL REVEAL OBSERVER =====
 function triggerReveal() {
   const els = document.querySelectorAll('.reveal,.reveal-left,.reveal-scale');
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }});
-  }, {threshold: 0.12});
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
   els.forEach(el => obs.observe(el));
 }
 </script>
