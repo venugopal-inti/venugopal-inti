@@ -585,24 +585,23 @@ ft('all',document.querySelector('.tbtn.active'));
 </script>
 
 <script>
-// ===== VOICE + TYPING SYNC =====
-
+// ===== INTRO TYPING ANIMATION =====
 const lines = [
-  { text: 'Initializing profile...',          cls: 'it-dim',   speak: true  },
-  { text: '',                                  cls: '',         speak: false },
-  { text: 'Hello.',                            cls: 'it-white', speak: true  },
-  { text: 'I am Venugopal Inti.',              cls: 'it-gold',  speak: true, bold: true },
-  { text: '',                                  cls: '',         speak: false },
-  { text: '> Role     :  Desktop Support Engineer',   cls: 'it-white', speak: true  },
-  { text: '> Location :  Hyderabad, India',           cls: 'it-white', speak: true  },
-  { text: '> Exp      :  6+ Years in IT Infrastructure', cls: 'it-white', speak: true  },
-  { text: '',                                  cls: '',         speak: false },
-  { text: '> Skills   :  MDM, SCCM, ServiceNow, Citrix VDI', cls: 'it-blue', speak: true },
-  { text: '> Tools    :  Intune, JAMF, Azure AD, PowerShell',  cls: 'it-blue', speak: true },
-  { text: '',                                  cls: '',         speak: false },
-  { text: '> Status   :  OPEN TO WORK  ✓',   cls: 'it-green', speak: true  },
-  { text: '',                                  cls: '',         speak: false },
-  { text: '> Loading portfolio...',            cls: 'it-dim',   speak: true  },
+  { text: '> initializing profile...', cls: 'it-dim'   },
+  { text: '',                          cls: ''          },
+  { text: 'Hello. I am',              cls: 'it-dim'   },
+  { text: 'Venugopal Inti',           cls: 'it-gold',  bold: true },
+  { text: '',                          cls: ''          },
+  { text: '> Role     :  Desktop Support Engineer',        cls: 'it-white' },
+  { text: '> Location :  Hyderabad, India',                cls: 'it-white' },
+  { text: '> Exp      :  6+ Years in IT Infrastructure',   cls: 'it-white' },
+  { text: '',                          cls: ''          },
+  { text: '> Skills   :  MDM | SCCM | ServiceNow | Citrix VDI', cls: 'it-blue' },
+  { text: '> Tools    :  Intune | JAMF | Azure AD | PowerShell',  cls: 'it-blue' },
+  { text: '',                          cls: ''          },
+  { text: '> Status   :  OPEN TO WORK  ✓',               cls: 'it-green' },
+  { text: '',                          cls: ''          },
+  { text: '> Loading portfolio...',    cls: 'it-dim'   },
 ];
 
 const introEl   = document.getElementById('intro-text');
@@ -615,75 +614,50 @@ function safe(fn, ms) {
   return t;
 }
 
-function clearAll() {
-  allTimeouts.forEach(clearTimeout);
-}
-
-// ---- VOICE ----
-function buildSpeechText() {
-  return lines.filter(l => l.speak && l.text).map(l => l.text).join('. ');
-}
-
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance(text);
-  utt.lang  = 'en-IN';   // Indian English accent
-  utt.rate  = 0.92;
-  utt.pitch = 1.0;
-  utt.volume = 1;
-
-  // Pick best available voice
-  const voices = window.speechSynthesis.getVoices();
-  const preferred = voices.find(v =>
-    v.lang === 'en-IN' ||
-    v.name.includes('Google') ||
-    v.lang.startsWith('en')
-  );
-  if (preferred) utt.voice = preferred;
-  window.speechSynthesis.speak(utt);
-}
-
-// ---- TYPING ----
 function typeAll() {
   introEl.innerHTML = '';
-  let cursor = document.createElement('span');
-  cursor.className = 'it-cursor';
+  // Type line by line, char by char sequentially using recursive approach
+  let lineIdx = 0;
 
-  let cumDelay = 300;
+  function typeLine() {
+    if (lineIdx >= lines.length) {
+      // All done — show cursor then dismiss
+      const cur = document.createElement('span');
+      cur.className = 'it-cursor';
+      introEl.appendChild(cur);
+      safe(dismissIntro, 1200);
+      return;
+    }
 
-  lines.forEach((line, i) => {
-    safe(() => {
-      // empty line = blank row
-      if (!line.text) {
-        introEl.appendChild(document.createTextNode('
-'));
-        return;
+    const line = lines[lineIdx++];
+
+    if (!line.text) {
+      introEl.appendChild(document.createTextNode('\n'));
+      safe(typeLine, 160);
+      return;
+    }
+
+    const span = document.createElement('span');
+    if (line.cls)  span.className = line.cls;
+    if (line.bold) span.style.fontWeight = '700';
+    introEl.appendChild(span);
+    introEl.appendChild(document.createTextNode('\n'));
+
+    let ci = 0;
+    function typeChar() {
+      if (ci < line.text.length) {
+        span.textContent += line.text[ci++];
+        safe(typeChar, 32);
+      } else {
+        // line done — pause then next line
+        const pause = lineIdx < 5 ? 420 : 260;
+        safe(typeLine, pause);
       }
-      const span = document.createElement('span');
-      if (line.cls)  span.className = line.cls;
-      if (line.bold) span.style.fontWeight = '700';
-      introEl.appendChild(span);
-      introEl.appendChild(document.createTextNode('
-'));
+    }
+    typeChar();
+  }
 
-      // type chars one by one
-      for (let ci = 0; ci < line.text.length; ci++) {
-        const ch = line.text[ci];
-        safe(() => { span.textContent += ch; }, cumDelay + ci * 26);
-      }
-    }, cumDelay);
-
-    // advance cumDelay: time to type this line + pause between lines
-    const typeTime = line.text ? line.text.length * 26 : 0;
-    const pause    = line.text ? (i < 3 ? 420 : 280) : 160;
-    cumDelay += typeTime + pause;
-  });
-
-  // cursor blink at end, then dismiss
-  const totalTime = cumDelay + 200;
-  safe(() => introEl.appendChild(cursor), totalTime);
-  safe(() => dismissIntro(), totalTime + 1100);
+  safe(typeLine, 400);
 }
 
 function dismissIntro() {
@@ -697,31 +671,12 @@ function dismissIntro() {
 }
 
 function skipIntro() {
-  clearAll();
-  if (window.speechSynthesis) window.speechSynthesis.cancel();
+  allTimeouts.forEach(clearTimeout);
   dismissIntro();
 }
 
-// ---- BOOT ----
-// Voices load async in some browsers
-function startIntro() {
-  const speechText = buildSpeechText();
-  speak(speechText);
-  typeAll();
-}
-
-if (window.speechSynthesis) {
-  const voices = window.speechSynthesis.getVoices();
-  if (voices.length > 0) {
-    startIntro();
-  } else {
-    window.speechSynthesis.onvoiceschanged = startIntro;
-    // fallback if event never fires
-    safe(startIntro, 500);
-  }
-} else {
-  startIntro(); // no speech — just type
-}
+// start typing
+typeAll();
 
 // ===== SCROLL REVEAL OBSERVER =====
 function triggerReveal() {
