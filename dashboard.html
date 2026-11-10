@@ -558,24 +558,24 @@ if(_su)new MutationObserver(()=>{if(_su.textContent.trim()){_su.style.display='b
    Order tried: logos/<key>.png  ->  site favicon  ->  monogram.
    To use official logos, drop files in a /logos folder: flipkart.png, kotak.png, ankura.png, lalitha.png, inox.png, datapro.png */
 const COMPANIES={
-  flipkart:{d:'flipkart.com',m:'FK'},
-  kotak:{d:'kotak.com',m:'KM'},
-  ankura:{d:'ankurahospitals.com',m:'AH'},
-  lalitha:{d:null,m:'SL'},
-  inox:{d:'inoxmovies.com',m:'IX'},
-  datapro:{d:null,m:'DP'}
+  flipkart:{d:'flipkart.com',m:'FK',f:['flipkart.png.png','flipkart.png','flipkart.jpg']},
+  kotak:{d:'kotak.com',m:'KM',f:['kotak.png.png','kotak.png','kotak.jpg']},
+  ankura:{d:'ankurahospitals.com',m:'AH',f:['ankura.png.png','ankura.png','ankura.jpg']},
+  lalitha:{d:null,m:'SL',f:['lalitha.png.jpg','lalitha.png','lalitha.jpg']},
+  inox:{d:'inoxmovies.com',m:'IX',f:['inox.png.jpg','inox.png','inox.jpg']},
+  datapro:{d:null,m:'DP',f:['dataPro.png.png','datapro.png.png','datapro.png','dataPro.png']}
 };
 function mountLogo(el){
   const c=COMPANIES[el.dataset.logo]; if(!c)return;
   el.classList.add('logo'); el.textContent='';
   const mono=()=>{el.innerHTML='';el.classList.add('mono');el.textContent=c.m};
-  const img=new Image(); img.alt=el.dataset.logo+' logo'; let stage=0;
-  img.onerror=()=>{
-    if(stage===0&&c.d){stage=1;img.src='https://www.google.com/s2/favicons?domain='+c.d+'&sz=128'}
-    else mono();
-  };
-  img.onload=()=>{ if(img.naturalWidth<24) mono(); };
-  img.src='logos/'+el.dataset.logo+'.png';
+  const img=new Image(); img.alt=el.dataset.logo+' logo';
+  const queue=(c.f||[el.dataset.logo+'.png']).map(n=>'logos/'+n);
+  if(c.d)queue.push('https://www.google.com/s2/favicons?domain='+c.d+'&sz=128');
+  let i=0;
+  img.onerror=()=>{ i++; if(i<queue.length)img.src=queue[i]; else mono(); };
+  img.onload=()=>{ if(img.naturalWidth<24) img.onerror(); };
+  img.src=queue[0];
   el.appendChild(img);
 }
 function mountAllLogos(root){(root||document).querySelectorAll('[data-logo]').forEach(mountLogo)}
