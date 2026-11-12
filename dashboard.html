@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Venugopal Inti | IT Infrastructure Portfolio</title>
 <meta name="description" content="Desktop Support Engineer with 6+ years in MDM, SCCM, ServiceNow and Citrix VDI. Hyderabad. Available immediately.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#f5f7ff; --soft:rgba(235,240,255,.68); --faint:rgba(235,240,255,.42);
@@ -126,6 +126,44 @@ body.booting{overflow:hidden}
 .avatar{width:170px;height:170px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:54px;font-weight:800;color:#fff;background:linear-gradient(145deg,#4f8cff,#a56bff);border:2px solid rgba(255,255,255,.35);box-shadow:0 0 0 8px rgba(255,255,255,.05),0 20px 60px rgba(0,0,0,.45),0 0 70px rgba(108,178,255,.25)}
 .avatar img{width:100%;height:100%;object-fit:cover;object-position:top}
 .pill{width:100%;text-align:center;font-size:12px;padding:8px 12px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--soft)}
+
+/* ---------- Voice intro ---------- */
+.voice{display:grid;grid-template-columns:240px 1fr;gap:30px;align-items:center}
+.vctl{display:flex;flex-direction:column;align-items:center;gap:14px}
+.vplay{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:132px;font-size:13px;font-weight:600;padding:12px 22px;border-radius:24px;cursor:pointer;color:#fff;font-family:var(--font);border:1px solid rgba(255,255,255,.3);background:linear-gradient(135deg,rgba(80,150,255,.9),rgba(140,100,255,.9));box-shadow:inset 0 1px 0 rgba(255,255,255,.4);transition:transform .2s}
+.vplay:hover{transform:translateY(-2px)}
+.vwave{display:flex;gap:4px;align-items:center;height:36px}
+.vwave i{width:4px;height:8px;border-radius:3px;background:linear-gradient(var(--blue),var(--violet))}
+.vwave.on i{animation:wv 1s ease-in-out infinite}
+.vwave i:nth-child(2){animation-delay:.12s}.vwave i:nth-child(3){animation-delay:.24s}.vwave i:nth-child(4){animation-delay:.36s}.vwave i:nth-child(5){animation-delay:.48s}.vwave i:nth-child(6){animation-delay:.6s}.vwave i:nth-child(7){animation-delay:.72s}
+@keyframes wv{0%,100%{height:8px}50%{height:32px}}
+.vstat{font-size:11px;color:var(--faint);text-align:center;max-width:150px}
+.vcap{font-size:18px;line-height:1.8;color:var(--soft)}
+.vcap span{transition:color .35s}
+.vcap.run span{color:var(--faint)}
+.vcap.run span.said{color:var(--soft)}
+.vcap.run span.now{color:#fff}
+.vface{position:relative;width:170px;height:170px;display:grid;place-items:center}
+.vpic{width:150px;height:150px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:44px;font-weight:800;color:#fff;background:linear-gradient(145deg,#4f8cff,#a56bff);border:2px solid rgba(255,255,255,.35);box-shadow:0 14px 40px rgba(0,0,0,.45);transition:box-shadow .15s ease}
+.vpic img{width:100%;height:100%;object-fit:cover;object-position:top}
+.vring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+.vface.speaking .vring{border-color:rgba(108,178,255,.55);animation:ring 1.6s ease-out infinite}
+.vface.speaking .vpic{animation:sway 3.2s ease-in-out infinite}
+.vface.beat .vpic{box-shadow:0 0 0 7px rgba(108,178,255,.28),0 14px 40px rgba(0,0,0,.45)}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.2);opacity:0}}
+@keyframes sway{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-2px) rotate(.8deg)}70%{transform:translateY(1px) rotate(-.8deg)}}
+.vface.hasvideo{width:230px;height:auto}
+.vface.hasvideo .vpic,.vface.hasvideo .vring{display:none}
+.vface video{width:230px;border-radius:20px;border:1px solid rgba(255,255,255,.25);box-shadow:0 14px 40px rgba(0,0,0,.45);background:#000}
+.vstat{max-width:220px}
+.vlang{display:flex;gap:4px;padding:3px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+.vlang button{border:none;background:none;color:var(--faint);font-size:12px;font-weight:600;padding:6px 14px;border-radius:14px;cursor:pointer;font-family:var(--font)}
+.vlang button.on{background:rgba(255,255,255,.16);color:#fff}
+.vcap:lang(te){font-family:'Noto Sans Telugu',var(--font);line-height:2}
+.vbtn{background:none;border:none;color:var(--soft);cursor:pointer;display:grid;place-items:center;padding:4px;border-radius:8px}
+.vbtn:hover{color:#fff}
+.vbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:820px){.voice{grid-template-columns:1fr}.vctl{flex-direction:row;justify-content:flex-start}.vcap{font-size:16px}}
 
 /* ---------- Runbook ---------- */
 .rb-list{display:flex;flex-direction:column;gap:8px}
@@ -310,6 +348,7 @@ textarea.inp{resize:vertical;min-height:110px}
       <svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r=".8" fill="currentColor"/></svg>
       <svg viewBox="0 0 24 24"><rect x="2" y="8" width="17" height="9" rx="2.5"/><path d="M21.5 11v3"/><rect x="4" y="10" width="11" height="5" rx="1" fill="currentColor" stroke="none"/></svg>
     </div>
+    <button class="vbtn" id="vmute" aria-label="Stop voice" title="Stop voice"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
     <span id="clock"></span>
   </div>
 </nav>
@@ -342,6 +381,27 @@ textarea.inp{resize:vertical;min-height:110px}
         <div class="pill">Hyderabad, India</div>
         <div class="pill">Open to work</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE INTRO -->
+<section class="win glass reveal" id="intro">
+  <header class="wbar"><i class="d r"></i><i class="d y"></i><i class="d g"></i><span class="wtitle">Voice Introduction</span></header>
+  <div class="wbody">
+    <div class="voice">
+      <div class="vctl">
+        <div class="vface" id="vface">
+          <div class="vring"></div>
+          <div class="vpic"><img src="photo.jpg" alt="Venugopal Inti" onerror="this.remove();this.parentNode.textContent='VI'"></div>
+          <video id="vvideo" playsinline preload="metadata" style="display:none"></video>
+        </div>
+        <div class="vwave" id="vwave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <button class="vplay" id="vplay">Play intro</button>
+        <div class="vstat" id="vstat">About 60 seconds</div>
+        <div class="vlang" id="vlang"><button type="button" data-l="en" class="on">English</button><button type="button" data-l="te">తెలుగు</button></div>
+      </div>
+      <div class="vcap" id="vcap"></div>
     </div>
   </div>
 </section>
@@ -687,6 +747,176 @@ document.querySelectorAll('[data-logo]').forEach(mountLogo);
   t();setInterval(t,15000);
 })();
 
+/* ================= VOICE INTRO =================
+   For each language the page looks for, in this order:
+   1. intro.mp4 / intro-te.mp4   your own recorded video (face and voice)
+   2. intro.mp3 / intro-te.mp3   your own recorded voice, photo animates
+   3. a male browser voice reading the script, photo animates */
+const Intro=(function(){
+  const T={
+    en:[
+      "Hi, I'm Venugopal Inti, but everyone calls me Venu.",
+      "I'm a Desktop Support Engineer and IT Administrator from Hyderabad.",
+      "For more than six years I've kept laptops, virtual desktops and ticket queues running.",
+      "I started out in data recovery and hardware support, then moved into hospital IT at Ankura Hospitals.",
+      "After that I spent over two years at Kotak Mahindra Bank, closing incidents in ServiceNow, managing devices with Intune and JAMF, and patching with SCCM.",
+      "Today I'm an IT Administrator at Flipkart, working with Ubuntu, Chrome OS and Azure.",
+      "Along the way I've received appreciation mails from Kotak's managers, and I've completed certifications from Microsoft, Google, IBM and Anthropic.",
+      "I'm open to on-site, hybrid and remote roles across India, and I can join immediately.",
+      "Please have a look around, and if you'd like to talk, the contact form is at the bottom of the page.",
+      "Thank you for stopping by."
+    ],
+    te:[
+      "నమస్కారం, నా పేరు వేణుగోపాల్ ఇంటి, అందరూ నన్ను వేణు అని పిలుస్తారు.",
+      "నేను హైదరాబాద్‌కి చెందిన డెస్క్‌టాప్ సపోర్ట్ ఇంజనీర్ మరియు ఐటీ అడ్మినిస్ట్రేటర్‌ని.",
+      "ఆరు సంవత్సరాలకు పైగా ల్యాప్‌టాప్‌లు, వర్చువల్ డెస్క్‌టాప్‌లు, టికెట్ క్యూలను సజావుగా నడిపిస్తున్నాను.",
+      "డేటా రికవరీ, హార్డ్‌వేర్ సపోర్ట్‌తో మొదలుపెట్టి, అంకుర హాస్పిటల్స్‌లో హాస్పిటల్ ఐటీ చూసుకున్నాను.",
+      "ఆ తర్వాత కోటక్ మహీంద్రా బ్యాంక్‌లో రెండు సంవత్సరాలకు పైగా పనిచేశాను. అక్కడ సర్వీస్‌నౌలో ఇన్సిడెంట్లు పరిష్కరించడం, ఇంట్యూన్, జామ్ఫ్‌తో డివైజ్‌లు మేనేజ్ చేయడం, ఎస్‌సీసీఎంతో ప్యాచింగ్ చేయడం నా పని.",
+      "ఇప్పుడు ఫ్లిప్‌కార్ట్‌లో ఐటీ అడ్మినిస్ట్రేటర్‌గా, ఉబుంటు, క్రోమ్ ఓఎస్, అజూర్‌తో పని చేస్తున్నాను.",
+      "కోటక్ మేనేజర్ల నుంచి అప్రిసియేషన్ మెయిల్స్ అందుకున్నాను, మైక్రోసాఫ్ట్, గూగుల్, ఐబీఎం, ఆంత్రోపిక్ నుంచి సర్టిఫికేషన్లు కూడా పూర్తి చేశాను.",
+      "ఇండియా అంతటా ఆన్‌సైట్, హైబ్రిడ్, రిమోట్ ఉద్యోగాలకు నేను సిద్ధం, వెంటనే జాయిన్ అవ్వగలను.",
+      "ఈ పేజీ అంతా చూడండి, మాట్లాడాలనుకుంటే కింద కాంటాక్ట్ ఫారమ్ ఉంది.",
+      "ఈ పేజీకి వచ్చినందుకు ధన్యవాదాలు."
+    ]
+  };
+  const FILES={en:'intro',te:'intro-te'};
+  const cap=$('vcap'),wave=$('vwave'),btn=$('vplay'),mute=$('vmute'),stat=$('vstat'),face=$('vface'),vid=$('vvideo'),langBox=$('vlang');
+  const synth='speechSynthesis' in window?window.speechSynthesis:null;
+  let lang='en',mode='tts',audioEl=null,idx=0,running=false,paused=false,token=0,timer=null;
+  const voices={en:null,te:null};
+
+  /* ---- male voice picker ---- */
+  const FEMALE=/female|woman|zira|heera|neerja|hazel|susan|samantha|karen|moira|tessa|veena|aria|jenny|libby|sonia|emma|natasha|clara|linda|catherine|swara|shruti/i;
+  const MALE=/\bmale\b|ravi|prabhat|mohan|david|mark|guy|george|james|daniel|alex|fred|rishi|ryan|thomas|oliver|eric|brian|davis|christopher/i;
+  const isMale=v=>!!v&&!FEMALE.test(v.name)&&MALE.test(v.name);
+  function pick(){
+    if(!synth)return;
+    const all=synth.getVoices();
+    ['en','te'].forEach(l=>{
+      const vs=all.filter(v=>new RegExp('^'+l,'i').test(v.lang));
+      if(!vs.length){voices[l]=null;return}
+      const score=v=>(isMale(v)?10:0)+(FEMALE.test(v.name)?-20:0)+(/[-_]IN/i.test(v.lang)?4:0)+(/natural|online|neural|google/i.test(v.name)?3:0);
+      voices[l]=vs.slice().sort((x,y)=>score(y)-score(x))[0];
+    });
+  }
+  if(synth){pick();synth.onvoiceschanged=pick}
+
+  /* ---- look for your own recording, per language ---- */
+  const probes={};
+  function probe(l){
+    return probes[l]||(probes[l]=new Promise(res=>{
+      let done=false;const fin=r=>{if(!done){done=true;res(r)}};
+      const v=document.createElement('video');v.preload='metadata';v.playsInline=true;
+      v.onloadedmetadata=()=>fin({type:'video'});
+      v.onerror=()=>{
+        const a=new Audio();a.preload='metadata';
+        a.onloadedmetadata=()=>fin({type:'audio',el:a});
+        a.onerror=()=>fin(null);
+        a.src=FILES[l]+'.mp3';
+      };
+      v.src=FILES[l]+'.mp4';
+      setTimeout(()=>fin(null),3000);
+    }));
+  }
+  async function setMedia(l){
+    const r=await probe(l);
+    if(l!==lang)return;
+    audioEl=null;mode='tts';
+    face.classList.remove('hasvideo');vid.style.display='none';
+    if(r&&r.type==='video'){
+      mode='video';
+      if(vid.getAttribute('src')!==FILES[l]+'.mp4')vid.src=FILES[l]+'.mp4';
+      face.classList.add('hasvideo');vid.style.display='block';
+    }else if(r&&r.type==='audio'){
+      mode='audio';audioEl=r.el;audioEl.onended=ended;
+    }
+    render(idx>=T[lang].length?idx:-1);ui();
+  }
+  const cur=()=>mode==='video'?vid:mode==='audio'?audioEl:null;
+  function ended(){running=false;paused=false;idx=T[lang].length;render(idx);ui()}
+  vid.addEventListener('ended',ended);
+
+  function render(i){
+    const text=T[lang];
+    cap.lang=lang;
+    cap.classList.toggle('run',mode==='tts'&&(running||paused||i>=text.length));
+    cap.innerHTML=text.map((s,n)=>`<span class="${n<i?'said':n===i?'now':''}">${s} </span>`).join('');
+  }
+  function ui(){
+    const on=running&&!paused;
+    wave.classList.toggle('on',on);
+    face.classList.toggle('speaking',on&&mode!=='video');
+    if(on){btn.textContent=lang==='te'?'ఆపండి':'Pause';stat.textContent=lang==='te'?'ప్లే అవుతోంది':'Playing'}
+    else if(paused){btn.textContent=lang==='te'?'కొనసాగించండి':'Resume';stat.textContent=lang==='te'?'ఆపారు':'Paused'}
+    else if(idx>=T[lang].length){btn.textContent=lang==='te'?'మళ్ళీ':'Replay';stat.textContent=lang==='te'?'పూర్తయింది':'Finished'}
+    else{btn.textContent=lang==='te'?'ఇంట్రో వినండి':'Play intro';stat.textContent=lang==='te'?'సుమారు 60 సెకన్లు':'About 60 seconds'}
+  }
+  function halt(){token++;clearTimeout(timer);if(synth)synth.cancel()}
+  function say(i,tok){
+    if(tok!==token)return;
+    const text=T[lang];
+    if(i>=text.length){ended();return}
+    idx=i;render(i);ui();
+    const v=voices[lang];
+    if(!synth||(lang==='te'&&!v)){
+      if(lang==='te'&&synth)stat.textContent='No Telugu voice on this device, showing captions only';
+      timer=setTimeout(()=>say(i+1,tok),text[i].split(' ').length*380+600);return;
+    }
+    const u=new SpeechSynthesisUtterance(text[i]);
+    u.lang=v?v.lang:(lang==='te'?'te-IN':'en-IN');if(v)u.voice=v;
+    u.rate=.96;u.pitch=isMale(v)?1:.8;
+    u.onboundary=()=>{face.classList.add('beat');setTimeout(()=>face.classList.remove('beat'),140)};
+    u.onend=()=>{if(tok===token&&!paused)say(i+1,tok)};
+    u.onerror=e=>{
+      if(tok!==token)return;
+      if(e.error==='not-allowed'){running=false;paused=false;idx=0;render(-1);ui();stat.textContent='Tap play to hear it';return}
+      if(e.error==='interrupted'||e.error==='canceled')return;
+      say(i+1,tok);
+    };
+    synth.speak(u);
+  }
+  async function play(){
+    if(running&&!paused)return;
+    await probe(lang);
+    if(mode==='tts'&&!face.classList.contains('hasvideo'))await setMedia(lang);
+    const m=cur();
+    if(m){
+      try{
+        if(!paused)m.currentTime=0;
+        await m.play();
+        running=true;paused=false;if(!idx)render(-1);ui();
+      }catch(e){running=false;paused=false;ui();stat.textContent='Tap play to hear it'}
+      return;
+    }
+    halt();const tok=token;
+    if(paused){paused=false;running=true;say(idx,tok);return}
+    idx=0;running=true;paused=false;say(0,tok);
+  }
+  function pause(){
+    if(!running||paused)return;
+    paused=true;const m=cur();if(m)m.pause();else halt();
+    ui();render(idx);
+  }
+  function stop(){
+    const m=cur();if(m){m.pause();m.currentTime=0}
+    halt();running=false;paused=false;idx=0;render(-1);ui();
+  }
+  function setLang(l){
+    if(l===lang)return;
+    const was=running&&!paused;
+    stop();lang=l;
+    langBox.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+    render(-1);ui();
+    setMedia(l).then(()=>{if(was)play()});
+  }
+  langBox.addEventListener('click',e=>{const b=e.target.closest('button[data-l]');if(b)setLang(b.dataset.l)});
+  btn.addEventListener('click',()=>{(running&&!paused)?pause():play()});
+  mute.addEventListener('click',stop);
+  window.addEventListener('pagehide',()=>{if(synth)synth.cancel();const m=cur();if(m)m.pause()});
+  render(-1);ui();setMedia('en');
+  return{play,stop};
+})();
+
 /* ================= BOOT SEQUENCE ================= */
 const boot=$('boot');let bt=[],done=false,went=false;
 const later=(fn,ms)=>{const t=setTimeout(fn,ms);bt.push(t)};
@@ -718,6 +948,7 @@ function finish(){
   try{sessionStorage.setItem('booted','1')}catch(e){}
   boot.classList.add('hidden');document.body.classList.remove('booting');
   setTimeout(()=>{boot.style.display='none'},900);reveal();
+  setTimeout(()=>Intro.play(),1300);
 }
 $('pwr').addEventListener('click',start);
 $('pwr').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')start()});
